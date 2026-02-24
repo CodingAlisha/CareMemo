@@ -1,9 +1,9 @@
 
 const express = require('express');
 const cors = require('cors');
-const physicianRoutes = require('./routes/userRoutes');
 const userRoutes = require('./routes/userRoutes');
-const authRoutes = require('./routes/authRoutes');
+const cookieParser = require('cookie-parser');
+// const { requireAuth, checkUserRegister } = require('./middleware/AuthMiddleware');
 
 
 // database connection
@@ -33,9 +33,9 @@ app.use(cors({
 // middleware
 app.use(express.static('public'));
 app.use(express.json());
-// app.use(cookieParser());
+app.use(cookieParser());
 
-// // parsing middleware
+// parsing middleware
 // app.use(express.urlencoded({ extended: true}));
 
 // view engine
@@ -44,8 +44,8 @@ app.set('view engine', 'ejs');
 
 // routes
 // app.get('/', (req, res) => res.render('landing'));
+// app.get('/home', requireAuth, (req, res) => res.render('home'));
 // userRoutes is where the api routes are located
-app.use ('/api', userRoutes);
 app.use ('/api', userRoutes);
 
 

@@ -3,9 +3,103 @@ const Meal = require("../models/Meal");
 const Schedule = require("../models/Schedule");
 const Medical = require("../models/Medical");
 const Medication = require("../models/Medication");
+const User = require("../models/User");
+const jwt = require('jsonwebtoken');
 
 
-console.log('userController loaded');
+
+
+// handle errors
+const handleErrors = (err) => {
+    console.log(err.message, err.code);
+    let errors = { email: '', password: ''};
+
+// incorrect email
+if (err.message === 'incorrect email') {
+    errors.email = 'That email is not registered';
+}
+
+// incorrect password
+if (err.message === 'incorrect password') {
+    errors.password = 'That password is incorrect';
+}
+
+// duplicate error code
+if (err.code === 11000) {
+    errors.email = 'that email is already registered';
+    return errors;
+}
+
+    // validation errors
+if (err.message.includes('register validation failed')) {
+    Object.values(err.errors).forEach(({properties}) => {
+        // console.log(error.properties);
+        errors[properties.path] = properties.message;
+    })
+}
+return errors;
+}
+
+// Token
+const maxAge = 3 * 24 * 60 * 60;
+const createToken = (id) => {
+    return jwt.sign({ id }, 'careMemo application secret', {
+        expiresIn: maxAge
+    });
+}
+
+
+// USER ROUTES FOR LOGIN
+module.exports.getSignUp = (req, res) => {
+  // res.render('signUp');
+  // res.json('signUp');
+  res.json({ message: 'success getting signup' });
+}
+
+module.exports.createSignUp = async (req, res) => {
+  const { email, password } = req.body;
+  
+  try {
+      const newUser = await User.create({ email, password });
+      const token = createToken(newUser._id);
+      res.cookie('jwt', token, {httpOnly:true, maxAge: maxAge * 1000});
+      res.status(201).json({user: newUser._id});
+  }
+  catch (err) {
+      const errors = handleErrors(err);
+      res.status(400).json({ errors });
+  }
+}
+
+// User Authentication GET
+module.exports.getLogin = (req, res) => {
+  // res.render('Login');
+  res.json({ message: 'success getting logging in' });
+}
+
+// User Authentication POST
+module.exports.createLogin = async  (req, res) => {
+  const { email, password } = req.body;
+  try {
+      const user = await User.login(email, password);
+      const token = createToken(user._id);
+      res.cookie('jwt', token, {httpOnly:true, maxAge: maxAge * 1000});
+      res.status(200).json({user: user._id});
+
+  }
+  catch (err) {
+      const errors = handleErrors(err);
+      res.status(400).json({ errors });
+  }
+
+}
+
+// User Authentication Logout
+module.exports.getLogout = (req, res) => {
+  res.cookie('jwt', '', {maxAge: 1});
+  res.redirect('/');
+}
+
 
 //GET ROUTE FOR MEALS
 module.exports.getLanding = (req, res) => {
@@ -121,3 +215,21 @@ module.exports.createMedication = async (req, res) => {
     res.status(400).json({ error: err.message });
   }
 };
+
+// DELETE ITEM BY ID
+module.exports.deleteItem = (Model) => async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const deleted = await Model.findByIdAndDelete(id);
+
+    if (!deleted) {
+      return res.status(404).json({ message: `Item with id ${id} not found` });
+    }
+
+    res.status(200).json({ message: "Deleted successfully", data: deleted });
+  } catch (error) {
+    res.status(500).json({ message: "Error deleting item", error: error.message });
+  }
+};
+
