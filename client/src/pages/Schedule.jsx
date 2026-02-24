@@ -1,9 +1,15 @@
 import React from 'react'
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom';
+import DeleteButton from '../components/DeleteButton';
 
 
 const UpcomingSchedule = () => {
   const [ schedules, setSchedules ] = useState([]);
+
+  const handleDelete = (id) => {
+    setSchedules((prev) => prev.filter((schedule) => schedule._id !== id));
+  };
 
   useEffect(( ) => {
     // fetch('http://localhost:3001/api/listMeals')
@@ -19,15 +25,21 @@ const UpcomingSchedule = () => {
   
   return (
     <div>
-       <h1>Upcoming Events & Appointments</h1>
+       <h1 className='scheduleH1'>Upcoming Events & Appointments</h1>
+
+       <Link to='/add-schedule'>Add New Event</Link>
+
+       <span className='cardSpan'>
        {schedules.map(schedule => (
         // .name is named after the model schema variable name const mealSelection
-        <div key= {schedule._id}>
-          <p>Event Name: {schedule.eventType}</p>
-          <p>Reason: {schedule.reason}</p>
-          <p>Status: {schedule.status}</p>
+        <div className='scheduleContainer' key= {schedule._id}>
+          <p className='scheduleName'>{schedule.eventType}</p>
+          <p className='scheduleReason'>Reason: {schedule.reason}</p>
+          <p className='scheduleStatus'>Status: {schedule.status}</p>
+          <DeleteButton endpoint='deleteSchedule' id={schedule._id} onDelete={handleDelete} />
           </div>
        ))}
+       </span>
     </div>
   );
 }

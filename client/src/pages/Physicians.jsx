@@ -1,9 +1,15 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react'
+import DeleteButton from '../components/DeleteButton';
 
 
 const Physicians = () => {
   const [ physicians, setPhysicians ] = useState([]);
+
+  const handleDelete = (id) => {
+    setPhysicians((prev) => prev.filter((physician) => physician._id !== id));
+  };
 
   useEffect(( ) => {
     // fetch('http://localhost:3001/api/physician')
@@ -19,14 +25,21 @@ const Physicians = () => {
   
   return (
     <div>
-       <h1>Physicians Page</h1>
+
+       <h1 className='physicianH1'>Physicians Page</h1>
+
+       <Link to='/add-physician'>Add New Physician</Link>
+
+       <span className='cardSpan'>
        {physicians.map(physician => (
-        <div key= {physician._id}>
-          <p>Name: {physician.name}</p>
-          <p>Specialty: {physician.specialty}</p>
-          <p>Contact: {physician.contact}</p>
+        <div className='physicianContainer' key= {physician._id}>
+          <p className='physicianName'>{physician.name}</p>
+          <p className='physicianSpecialty'>Specialty: {physician.specialty}</p>
+          <p className='physicianContact'>Contact: {physician.contact}</p>
+          <DeleteButton endpoint={'deletePhysician'} id={physician._id} onDelete={handleDelete} />
           </div>
        ))}
+       </span>
     </div>
   );
 }

@@ -11,19 +11,14 @@ const NavBar = () => {
             <NavLink to='/list-meals'>Meals</NavLink>
             <NavLink to='/list-physicians'>Physicians</NavLink>
             <NavLink to='/list-schedule'>Schedule</NavLink>
-            <NavLink to='/list-medical'>Medical Alert</NavLink>
-            <NavLink to='/list-medication'>Medication</NavLink>
+            <NavLink to='/signUp'>Sign Up</NavLink>
+            <NavLink to='/login'>Log In</NavLink>
+            {/* <NavLink to='/list-medical'>Medical Alert</NavLink>
+            <NavLink to='/list-medication'>Medication</NavLink> */}
         </nav>
     </div>
   )
 }
 
-// const NavBar = () => {
-//   return (
-//     <h1 style={{ color: 'red' }}>
-//       NAVBAR IS RENDERING
-//     </h1>
-//   )
-// }
 
 export default NavBar

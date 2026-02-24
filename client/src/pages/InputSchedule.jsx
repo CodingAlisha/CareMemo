@@ -1,0 +1,95 @@
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
+
+const InputSchedule = () => {
+    const navigate = useNavigate();
+
+    const [formData, setFormData ] = useState ({
+        eventType: '',
+        reason: '',
+        status: '',
+    });
+
+    const handleChange = (e) => {
+        setFormData ({
+            ...formData, 
+            [e.target.name]: e.target.value,
+        });
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        console.log("Submitting:", formData);
+      
+        const res = await fetch("/api/schedule", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        });
+      
+        const data = await res.json();
+        console.log("Response:", data);
+      
+        navigate("/list-schedule");
+      };
+
+    return (
+        <div className='formContainer'>
+            <h1 className='formH1'>Add Event</h1>
+
+            <form className='mealForm' onSubmit={handleSubmit}>
+
+                <div>
+                <select className='formSelect'
+            name="eventType"
+            value={formData.eventType}
+            onChange={handleChange}
+            >
+            <option value="">Select Event Type</option>
+            <option value="DOCTOR">Doctor</option>
+            <option value="PRACTICE">Practice</option>
+            <option value="MEETING">Meeting</option>
+            <option value="DANCE">Dance</option>
+            <option value="OTHER">Other</option>
+            </select>
+                </div>
+
+    
+            
+            <div>
+            <select className='formSelect'
+            name="status"
+            value={formData.status}
+            onChange={handleChange}
+            >
+            <option value="">Select Event Status</option>
+            <option value="SCHEDULED">Scheduled</option>
+            <option value="CANCELLED">Cancelled</option>
+            <option value="COMPLETED">Completed</option>
+            </select>
+            </div>
+        
+            <div>
+            <label htmlFor="Reason">Reason for Visit</label>
+            <textarea className='formTextArea'
+            name='reason'
+            value={formData.reason}
+            onChange={handleChange}
+            placeholder='Type here'
+            />
+            </div>
+
+           
+
+
+
+            <button className='formBtn'type='submit'>Save</button>
+            </form>
+        </div>
+    );
+};
+
+export default InputSchedule;

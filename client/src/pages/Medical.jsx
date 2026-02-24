@@ -1,9 +1,15 @@
 import React from 'react'
-import { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react';
+import DeleteButton from '../components/DeleteButton';
+// DELETE BUTTON NOT WORKING
 
 
 const MedicalList = () => {
   const [ medicals, setMedicals ] = useState([]);
+
+  const handleDelete = (id) => {
+    setMedicals((prev) => prev.filter((medical) => medical._id !== id));
+  };
 
   useEffect(( ) => {
     // fetch('http://localhost:3001/api/listMeals')
@@ -25,6 +31,7 @@ const MedicalList = () => {
           <p>Name: {medicalAlert.name}</p>
           <p>Allergy: {medicalAlert.allergy}</p>
           <p>Special Notes: {medicalAlert.notes}</p>
+          <DeleteButton endpoint={'deleteMedicalAlert'} id={medicalAlert._id} onDelete={handleDelete} />
           </div>
        ))}
     </div>

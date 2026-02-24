@@ -2,13 +2,9 @@
 import React from 'react'
 
 
-
-
-
-
 const Card = ({tag, img, title, description, imgIcon, subName, subDesc}) => {
   return (
-    <>
+    <div className='main'>
         <div className='container'>
             <div className='wrapper'>
                 <div className='cardList'>
@@ -28,7 +24,7 @@ const Card = ({tag, img, title, description, imgIcon, subName, subDesc}) => {
                                     <span className='cardProfileInfoDesc'>{subDesc}</span>
                                     </div>
                                     </div>
-                                    <a href='#' className='cardButton'>Read More</a>
+                                    {/* <a href='#' className='cardButton'>Read More</a> */}
                                     <div className='cardProfileImg'>
                                     
                                    
@@ -40,7 +36,7 @@ const Card = ({tag, img, title, description, imgIcon, subName, subDesc}) => {
             </div>
         </div>
      
-    </>
+    </div>
   )
 }
 

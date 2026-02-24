@@ -1,9 +1,16 @@
 import React from 'react'
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom';
+import MainBanner from '../components/MainBanner';
+import DeleteButton from '../components/DeleteButton';
 
 
 const MealList = () => {
   const [ meals, setMeals ] = useState([]);
+
+  const handleDelete = (id) => {
+    setMeals((prev) => prev.filter((meal) => meal._id !== id));
+  };
 
   useEffect(( ) => {
     // fetch('http://localhost:3001/api/listMeals')
@@ -14,19 +21,30 @@ const MealList = () => {
       setMeals(data);
     })
     .catch(err => console.error("ERROR:", err));
+
+
   }, []);
   
   return (
     <div>
-       <h1>Favorite Meals</h1>
+      
+       <h1 className='mealH1'>Favorite Meals</h1>
+
+       <MainBanner />
+
+       <Link to='/add-meals'>Add New Meal</Link>
+       
+       <span className='cardSpan'>
        {meals.map(meal => (
         // .name is named after the model schema variable name const mealSelection
-        <div key= {meal._id}>
-          <p>Name: {meal.name}</p>
-          <p>Meal: {meal.mealType}</p>
-          <p>Special Instructions: {meal.directions}</p>
+        <div className='mealContainer' key= {meal._id}>
+          <p className='mealName'>{meal.name}</p>
+          <p className='mealMeal'>Meal: {meal.mealType}</p>
+          <p className='mealInstructions'>Special Instructions: {meal.directions}</p>
+          <DeleteButton endpoint='deleteMeals' id={meal._id} onDelete={handleDelete} />
           </div>
        ))}
+       </span>
     </div>
   );
 }

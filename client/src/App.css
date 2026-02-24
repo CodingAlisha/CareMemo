@@ -2,32 +2,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap');
 
 
-/* .swiper-slide {
-  height: auto;
-  display: flex;
-}
-
-.swiper {
-  min-height: 300px;
-}
-
-.swiper-slide {
-  display: flex;
-  justify-content: center;
-  align-items: stretch;
-} */
-
-/* .Navbar {
-  background: #222;
-  padding: 1rem;
-}
-
-.Navbar a {
-  color: white;
-  margin-right: 1rem;
-  text-decoration: none;
-} */
-
 
 .heading {
   color: #a8a7a2f4;
@@ -180,6 +154,44 @@ body {
   box-shadow: 0 8px 15px rgba(161, 159, 159, 0.03);
 }
 
+.cardSpan {
+  flex-direction: row;
+  display: flex;
+  padding: 20px;
+  margin: 20px;
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  gap: 30px;
+  
+}
+
+.landingBanner {
+  height: 60vh;
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.landingBanner::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.landingBannerContent {
+  position: relative;
+  color:#cbc9c9;
+  text-align: center;
+  z-index: 1;
+}
+
 
 #root {
   max-width: 1280px;
@@ -188,4 +200,135 @@ body {
   text-align: center;
 }
 
+nav {
+  display: flex;
+  justify-content:space-between;
+  align-items: flex-end;
+  margin-bottom: 20px;
+}
+/* nav ul{
+  display: flex;
+  align-items: center;
+}
+nav li{
+  margin-left: 20px;
+}
+nav li a{
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 0.8em;
+  display: block;
+  padding: 10px 16px;
+  letter-spacing: 2px;
+} */
+.btn{
+  border-radius: 36px;
+  background: #ffff;
+}
+form h2{
+  font-size: 2.4em;
+  font-weight: 900;
+  margin-bottom: 40px;
+}
+form{
+  width: 360px;
+  margin: 0 auto;
+  padding: 30px;
+  box-shadow: 1px 2px 3px rgba(0,0,0,0.1);
+  border-radius: 10px;
+  background: rgb(241, 239, 236);
+}
+input{
+  padding: 10px 12px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  font-size: 1em;
+  width: 100%;
+}
+label{
+  display: block;
+  margin: 20px 0 10px;
+}
+button{
+  margin-top: 30px;
+  border-radius: 36px;
+  background: #f0d1b5c2;
+  border:0;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 0.8em;
+  display: block;
+  padding: 10px 16px;
+  letter-spacing: 2px;
+}
 
+
+.footerPage {
+  position: fixed;
+  bottom: 0; 
+  left: 0;
+  width: 100%;
+  background-color: #33333380;
+  color: white;
+  padding: 1em;
+  z-index: 1000; 
+}
+
+body {
+ padding-top: 100px;
+  padding-bottom: 60px; 
+}
+
+/* .mealContainer {
+  background: white;
+  padding: 20px;
+  max-width: 350px;
+  margin: 20px auto;
+  border-radius: 8px;
+} */
+
+.mealContainer, .physicianContainer, .scheduleContainer, .medicationContainer, .medicalContainer {
+  background: white;
+  padding: 20px;
+  flex: 0 0 350px; /* don't grow, don't shrink, stay 350px */
+  border-radius: 8px;
+}
+
+.medicationContainer:hover, .medicalContainer:hover {
+  transform: translateY(-5px);
+}
+
+.mealContainer:hover, .physicianContainer:hover, .scheduleContainer:hover {
+  transform: translateY(-5px);
+}
+
+.mealName, .physicianName, .scheduleName, .medicationName, .medicalName {
+  text-align: center;
+  margin-bottom: 10px;
+  color: rgba(131, 120, 110, 0.966);
+}
+
+.mealMeal, .mealInstructions, .physicianSpecialty, .physicianContact, .scheduleReason, .scheduleStatus, .medicationDose, .medicationNotes, .medicalAllergy, .medicalNotes {
+  text-align: left;
+  color: rgba(131, 120, 110, 0.966);
+}
+
+.mealH1, .physicianH1, .medicationH1, .scheduleH1, .medicationH1, .medicalH1 {
+  color: rgba(131, 120, 110, 0.966);
+}
+
+.cardSpan {
+  flex-wrap: wrap; 
+}
+
+.formSelect, .formTextArea {
+  padding: 8px;
+  border-radius: 5px;
+  margin: 10px;
+  width: 100%;
+  color:rgba(131, 120, 110, 0.966);
+}
+
+.formH1 {
+  color: rgba(131, 120, 110, 0.966);
+}

@@ -7,14 +7,46 @@ import schedule from '../assets/schedule.jpg';
 import freshMeals from '../assets/freshMeals.jpeg';
 import foodIcon from '../assets/foodIcon.png';
 import foodHeartIcon from '../assets/foodHeartIcon.png';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination } from 'swiper/modules';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-import 'swiper/css';
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import DeleteButton from '../components/DeleteButton';
+import { getMedication } from '../components/ServicesMedication';
+import { getMedicalAlert } from '../components/ServicesMedical';
 
 
 const Home = () => {
+  const [ medications, setMedications ] = useState([]);
+  const [ medicals, setMedicals ] = useState([]);
+
+  const handleDeleteMedical = (id) => {
+    setMedicals((prev) => prev.filter((medical) => medical._id !== id));
+  };
+
+  const handleDeleteMedication = (id) => {
+    setMedications((prev) => prev.filter((medication) => medication._id !== id));
+  };
+
+  useEffect(( ) => {
+    // fetch('http://localhost:3001/api/listMeals')
+    fetch ('/api/medication')
+    .then(res => res.json ())
+    .then(data => {
+      console.log("DATA FROM API:", data);
+      setMedications(data);
+    })
+    .catch(err => console.error("ERROR:", err));
+  }, []);
+
+  useEffect(( ) => {
+    // fetch('http://localhost:3001/api/listMeals')
+    fetch ('/api/medicalAlert')
+    .then(res => res.json ())
+    .then(data => {
+      console.log("DATA FROM API:", data);
+      setMedicals(data);
+    })
+    .catch(err => console.error("ERROR:", err));
+  }, []);
 
   const mainCards = [
 
@@ -22,39 +54,59 @@ const Home = () => {
       tag: 'Upcoming Appointments',
       img: planner,
       title: 'Schedule',
-      description: 'Here is the text for description in the schedule card',
+      description: 'Never miss what matters, your appointments, milestones, and special events! We take the guesswork out of your day so you can focus on what matters most. ',
       imgIcon: schedule,
       subName: 'Appointments',
-      subDesc: 'Text Here'
+      subDesc: 'Add Events'
     },
     {
       tag: 'Meals & Snacks',
       img: freshMeals,
       title: 'Favorite Meals',
-      description: 'Here is the text for description in the food card',
+      description: 'Build a care meal plan as unique as the person it"s made for. From daily meals to medication and beyond, personalized support that keeps them comfortable, cared for, and at their best. ',
       imgIcon: foodHeartIcon,
       subName: 'Meals',
-      subDesc: 'Text Here'
+      subDesc: 'Add Meals'
     },
     {
       tag: 'Doctors & Specialist',
       img: doctorImg,
       title: 'Doctors',
-      description: 'Here is the text for description in the doctor card',
+      description: 'Everything about your health, right where you need it. Update your primary care provider, manage specialist, and keep your information current. No calls, no phone calls, just one click away.',
       imgIcon: doctor,
-      subName: 'Your Doctor',
-      subDesc: 'Text Here'
+      subName: 'Doctors',
+      subDesc: 'Add Doctors'
     }
   ]
  
 return (
   <div>
     <h1 className='heading'>Welcome, Customize a Care Plan</h1>
-
+    <section>
     
+    <h1 className='medicalH1'>Medical Information</h1>
+    <Link to='/add-medical' className='button' >New Medical Alert</Link>
+    <span className='cardSpan'>
+       {medicals.map(medicalAlert => (
+        // .after you map you need the api name before => name is named after the model schema variable name const mealSelection
+        <div className='medicalContainer' key= {medicalAlert._id}>
+          <p className='medicalName'>{medicalAlert.name}</p>
+          <p className='medicalAllergy'><strong>Allergy:</strong> {medicalAlert.allergy}</p>
+          <p className='medicalNotes'><strong>Special Notes:</strong> {medicalAlert.notes}</p>
+          <DeleteButton endpoint={'deleteMedicalAlert'} id={medicalAlert._id} onDelete={handleDeleteMedical} />
+          </div>
+       ))}
+       </span>
+    </section>
+    
+
+    <div>
+      
+    </div>
+    <span className='cardSpan'>
      {mainCards.map((card, index) => (
    
-    <Card 
+    <Card className='moveCard'
     key={index}
     tag={card.tag}
     img={card.img}
@@ -64,8 +116,34 @@ return (
     subName={card.subName}
     subDesc={card.subDesc}
     />
-    
   ))}
+  </span>
+  <section>
+        <h1 className='medicationH1'>Medications</h1>
+
+        <Link to='/add-medication'>Add New Medication</Link>
+
+       <span className='cardSpan'>
+       {medications.map(medication => (
+        // .after you map you need the api name before => name is named after the model schema variable name const mealSelection
+        <div className='medicationContainer'key= {medication._id}>
+          <p className='medicationName'>Name: {medication.name}</p>
+          <p className='medicationDose'>Dose: {medication.dose}</p>
+          <p className='medicationNotes'>Special Notes: {medication.notes}</p>
+          <DeleteButton className='formBtn' endpoint='deleteMedication' id={medication._id} onDelete={handleDeleteMedication} />
+          </div>
+       ))}
+       </span>
+  {/* <h1>Medications</h1>
+       {medications.map(medication => (
+        // .after you map you need the api name before => name is named after the model schema variable name const mealSelection
+        <div key= {medication._id}>
+          <p>Name: {medication.name}</p>
+          <p>Dose: {medication.dose}</p>
+          <p>Special Notes: {medication.notes}</p>
+          </div>
+       ))} */}
+  </section>
   </div>
 )
 }
