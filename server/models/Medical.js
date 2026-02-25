@@ -3,18 +3,19 @@ const mongoose = require('mongoose');
 const medicalSchema = new mongoose.Schema ({
     name: {
         type: String,
-        required: false,
+        required: [true, 'Please enter medical type or N/A'],
         uppercase: true
+        
     },
     allergy: {
         type: String,
-        required: false,
+        required: [true, 'Please enter allergy or N/A'],
         uppercase: true
 
     },
     notes: {
         type: String,
-        required: false,
+        required: [true, 'Please enter notes or type none'],
         minLength: 3,
         maxLength: 200
         

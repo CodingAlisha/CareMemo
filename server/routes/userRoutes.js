@@ -23,7 +23,7 @@ router.get('/login', userController.getLogin);
 router.post('/login', userController.createLogin);
 
 // log a user out
-router.get('/logout', userController.getLogout);
+router.get('/logout', userController.logout);
 
 router.get('/', userController.getLanding);
 
@@ -56,6 +56,8 @@ router.delete('/deletePhysician/:id', userController.deleteItem(Physician));
 router.delete('/deleteSchedule/:id', userController.deleteItem(Schedule));
 
 router.delete('/deleteMedication/:id', userController.deleteItem(Medication));
+
+router.get('/authUser', userController.checkUser);
 
 
 module.exports = router;

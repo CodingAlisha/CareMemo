@@ -42,11 +42,16 @@ return errors;
 
 // Token
 const maxAge = 3 * 24 * 60 * 60;
+
 const createToken = (id) => {
-    return jwt.sign({ id }, 'careMemo application secret', {
-        expiresIn: maxAge
-    });
-}
+  // console.log('SECRET:', process.env.JWT_SECRET);
+  return jwt.sign({id}, process.env.JWT_SECRET,{
+    expiresIn: maxAge
+  });
+    // return jwt.sign({ id }, 'careMemo application secret', {
+    //     expiresIn: maxAge
+    // });
+};
 
 
 // USER ROUTES FOR LOGIN
@@ -62,7 +67,12 @@ module.exports.createSignUp = async (req, res) => {
   try {
       const newUser = await User.create({ email, password });
       const token = createToken(newUser._id);
-      res.cookie('jwt', token, {httpOnly:true, maxAge: maxAge * 1000});
+      res.cookie('jwt', token, {
+        httpOnly:true, 
+        sameSite: 'lax',
+        secure: false,
+        maxAge: maxAge * 1000
+      });
       res.status(201).json({user: newUser._id});
   }
   catch (err) {
@@ -83,7 +93,12 @@ module.exports.createLogin = async  (req, res) => {
   try {
       const user = await User.login(email, password);
       const token = createToken(user._id);
-      res.cookie('jwt', token, {httpOnly:true, maxAge: maxAge * 1000});
+      res.cookie('jwt', token, {
+        httpOnly:true,
+        sameSite: 'lax',
+        secure: false,
+        maxAge: maxAge * 1000
+      });
       res.status(200).json({user: user._id});
 
   }
@@ -95,10 +110,15 @@ module.exports.createLogin = async  (req, res) => {
 }
 
 // User Authentication Logout
-module.exports.getLogout = (req, res) => {
-  res.cookie('jwt', '', {maxAge: 1});
-  res.redirect('/');
-}
+module.exports.logout = (req, res) => {
+  res.cookie('jwt', '', {
+    httpOnly:true, 
+    maxAge: 1
+  })
+  res.status(200).json({message: 'logged out'});
+  // res.cookie('jwt', '', {maxAge: 1});
+  // res.redirect('/');
+};
 
 
 //GET ROUTE FOR MEALS
@@ -233,3 +253,17 @@ module.exports.deleteItem = (Model) => async (req, res) => {
   }
 };
 
+// Added
+
+module.exports.checkUser = (req, res) => {
+  // console.log('Cookies:', req.cookies);
+  const token = req.cookies.jwt;
+  if (!token) return res.status(401).json({ message: 'Unauthorized' });
+
+  try {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    res.status(200).json({ user: decoded });
+  } catch (err) {
+    res.status(401).json({ message: 'Unauthorized' });
+  }
+};
