@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react'
+import MainBanner from '../components/MainBanner';
 import DeleteButton from '../components/DeleteButton';
 
 
@@ -26,9 +27,11 @@ const Physicians = () => {
   return (
     <div>
 
-       <h1 className='physicianH1'>Physicians Page</h1>
+       <h1 className='physicianH1'>Physicians</h1>
 
-       <Link to='/add-physician'>Add New Physician</Link>
+       <MainBanner />
+
+       <Link to='/add-physician' className='nav-link'>Add New Physician</Link>
 
        <span className='cardSpan'>
        {physicians.map(physician => (

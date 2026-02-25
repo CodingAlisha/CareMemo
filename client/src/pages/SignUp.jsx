@@ -1,6 +1,7 @@
 // import React, { useState } from 'react';
 import React from 'react'
 import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 
 
 const SignUp = () => {
@@ -8,6 +9,8 @@ const SignUp = () => {
   const [password, setPassword] = useState('');
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
+
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -32,7 +35,8 @@ const SignUp = () => {
       }
 
       if (data.user) {
-        window.location = '/home';
+        // window.location = '/home';
+        setTimeout(() => navigate('/home'), 100);
       }
 
     } catch (err) {

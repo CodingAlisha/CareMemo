@@ -47,6 +47,7 @@ const InputSchedule = () => {
             name="eventType"
             value={formData.eventType}
             onChange={handleChange}
+            required
             >
             <option value="">Select Event Type</option>
             <option value="DOCTOR">Doctor</option>
@@ -64,6 +65,7 @@ const InputSchedule = () => {
             name="status"
             value={formData.status}
             onChange={handleChange}
+            required
             >
             <option value="">Select Event Status</option>
             <option value="SCHEDULED">Scheduled</option>
@@ -79,6 +81,7 @@ const InputSchedule = () => {
             value={formData.reason}
             onChange={handleChange}
             placeholder='Type here'
+            required
             />
             </div>
 

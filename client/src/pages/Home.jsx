@@ -85,7 +85,7 @@ return (
     <section>
     
     <h1 className='medicalH1'>Medical Information</h1>
-    <Link to='/add-medical' className='button' >New Medical Alert</Link>
+    <Link to='/add-medical' className='nav-link'>Add Medical Alert</Link>
     <span className='cardSpan'>
        {medicals.map(medicalAlert => (
         // .after you map you need the api name before => name is named after the model schema variable name const mealSelection
@@ -121,7 +121,7 @@ return (
   <section>
         <h1 className='medicationH1'>Medications</h1>
 
-        <Link to='/add-medication'>Add New Medication</Link>
+        <Link to='/add-medication' className='nav-link'>Add New Medication</Link>
 
        <span className='cardSpan'>
        {medications.map(medication => (

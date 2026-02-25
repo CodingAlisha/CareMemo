@@ -32,7 +32,7 @@ const MealList = () => {
 
        <MainBanner />
 
-       <Link to='/add-meals'>Add New Meal</Link>
+       <Link to='/add-meals' className='nav-link'>Add New Meal</Link>
        
        <span className='cardSpan'>
        {meals.map(meal => (

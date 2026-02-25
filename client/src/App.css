@@ -332,3 +332,20 @@ body {
 .formH1 {
   color: rgba(131, 120, 110, 0.966);
 }
+
+.nav-link {
+  color: rgba(131, 120, 110, 0.966);
+  text-decoration: none;
+  margin-right: 1rem;
+  font-weight: 500;
+  transition: 0.3s ease;
+}
+
+.nav-link:hover {
+  color: rgba(218, 106, 54, 0.986);
+}
+
+.nav-link.active {
+  border-bottom: 2px solid rgba(131, 120, 110, 0.966);
+  color: rgba(218, 106, 54, 0.986);
+}

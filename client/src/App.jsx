@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import RequireAuth from './components/RequireAuth';
+import ProtectedRoute from './components/ProtectedRoute';
+// import RequireAuth from './components/RequireAuth';
 
 
 // import reactLogo from './assets/react.svg'
@@ -48,7 +49,7 @@ function App() {
       <Route path='/login' element={<Login/>} />
 
        {/* PROTECTED ROUTE*/}
-       {/* <Route element={<RequireAuth />}> */}
+       <Route element={<ProtectedRoute />}>
       <Route path='/home' element={<Home />} />
       <Route path='/list-physicians' element={<Physicians />} />
       <Route path='/list-meals' element={<Meals/>} />
@@ -60,7 +61,7 @@ function App() {
       <Route path='/add-medication' element={<InputMedication/>} />
       <Route path='/add-schedule' element={<InputSchedule/>} />
       <Route path='/add-medical' element={<InputMedical/>} />
-      {/* </Route> */}
+      </Route>
     </Routes>
     <Footer />
     </BrowserRouter> 

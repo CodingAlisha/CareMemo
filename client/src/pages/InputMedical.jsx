@@ -45,9 +45,10 @@ const InputMedical = () => {
             <label htmlFor="name">Medical Alert Name</label>
             <input className='formInput'
             name='name'
-            value={formData.name || ''}
+            value={formData.name}
             onChange={handleChange}
             placeholder='ex: Sever Asthma'
+            required
             />
 
             <label htmlFor="Allergy">Allergy</label>
@@ -56,6 +57,7 @@ const InputMedical = () => {
             value={formData.allergy || ''}
             onChange={handleChange}
             placeholder='ex: Peanuts'
+            required
             />
 
 
@@ -64,7 +66,8 @@ const InputMedical = () => {
             name='notes'
             value={formData.notes}
             onChange={handleChange}
-            placeholder=''
+            placeholder='Add special notes here'
+            required
             />
 
             <button className='formBtn'type='submit'>Save</button>

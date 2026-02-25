@@ -1,6 +1,7 @@
 import React from 'react'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
+import MainBanner from '../components/MainBanner';
 import DeleteButton from '../components/DeleteButton';
 
 
@@ -27,7 +28,9 @@ const UpcomingSchedule = () => {
     <div>
        <h1 className='scheduleH1'>Upcoming Events & Appointments</h1>
 
-       <Link to='/add-schedule'>Add New Event</Link>
+       <MainBanner />
+
+       <Link to='/add-schedule' className='nav-link'>Add New Event</Link>
 
        <span className='cardSpan'>
        {schedules.map(schedule => (

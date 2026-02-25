@@ -48,6 +48,7 @@ const InputPhysician = () => {
             value={formData.name || ''}
             onChange={handleChange}
             placeholder='ex: Dr. Johnson'
+            required
             />
 
             <label htmlFor="Specialty">Specialty</label>
@@ -56,6 +57,7 @@ const InputPhysician = () => {
             value={formData.specialty || ''}
             onChange={handleChange}
             placeholder='ex: Primary'
+            required
             />
 
 
@@ -65,6 +67,7 @@ const InputPhysician = () => {
             value={formData.contact}
             onChange={handleChange}
             placeholder=''
+            required
             />
 
             <button className='formBtn'type='submit'>Save</button>
