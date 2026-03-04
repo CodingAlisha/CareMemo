@@ -8,10 +8,12 @@ import freshMeals from '../assets/freshMeals.jpeg';
 import foodIcon from '../assets/foodIcon.png';
 import foodHeartIcon from '../assets/foodHeartIcon.png';
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import DeleteButton from '../components/DeleteButton';
-import { getMedication } from '../components/ServicesMedication';
-import { getMedicalAlert } from '../components/ServicesMedical';
+import medicalIcon from '../assets/medicalIcon.jpg';
+import medicationIcon from '../assets/medicationIcon.jpg';
+// import { getMedication } from '../components/ServicesMedication';
+// import { getMedicalAlert } from '../components/ServicesMedical';
 
 
 const Home = () => {
@@ -57,7 +59,8 @@ const Home = () => {
       description: 'Never miss what matters, your appointments, milestones, and special events! We take the guesswork out of your day so you can focus on what matters most. ',
       imgIcon: schedule,
       subName: 'Appointments',
-      subDesc: 'Add Events'
+      subDesc: 'Add Events',
+      route: '/list-schedule'
     },
     {
       tag: 'Meals & Snacks',
@@ -66,7 +69,8 @@ const Home = () => {
       description: 'Build a care meal plan as unique as the person it"s made for. From daily meals to medication and beyond, personalized support that keeps them comfortable, cared for, and at their best. ',
       imgIcon: foodHeartIcon,
       subName: 'Meals',
-      subDesc: 'Add Meals'
+      subDesc: 'Add Meals',
+      route: '/list-meals'
     },
     {
       tag: 'Doctors & Specialist',
@@ -75,7 +79,8 @@ const Home = () => {
       description: 'Everything about your health, right where you need it. Update your primary care provider, manage specialist, and keep your information current. No calls, no phone calls, just one click away.',
       imgIcon: doctor,
       subName: 'Doctors',
-      subDesc: 'Add Doctors'
+      subDesc: 'Add Doctors',
+      route: '/list-physicians'
     }
   ]
  
@@ -90,7 +95,8 @@ return (
        {medicals.map(medicalAlert => (
         // .after you map you need the api name before => name is named after the model schema variable name const mealSelection
         <div className='medicalContainer' key= {medicalAlert._id}>
-          <p className='medicalName'>{medicalAlert.name}</p>
+          <img className='medicalIcon' src={medicalIcon} alt= 'Medical Alert Icon'/>
+          <p className='medicalName'><strong>{medicalAlert.name}</strong></p>
           <p className='medicalAllergy'><strong>Allergy:</strong> {medicalAlert.allergy}</p>
           <p className='medicalNotes'><strong>Special Notes:</strong> {medicalAlert.notes}</p>
           <DeleteButton endpoint={'deleteMedicalAlert'} id={medicalAlert._id} onDelete={handleDeleteMedical} />
@@ -115,6 +121,7 @@ return (
     imgIcon={card.imgIcon}
     subName={card.subName}
     subDesc={card.subDesc}
+    route={card.route}
     />
   ))}
   </span>
@@ -127,22 +134,14 @@ return (
        {medications.map(medication => (
         // .after you map you need the api name before => name is named after the model schema variable name const mealSelection
         <div className='medicationContainer'key= {medication._id}>
-          <p className='medicationName'>Name: {medication.name}</p>
+           <img className='medicationIcon' src={medicationIcon} alt= 'Medical Alert Icon'/>
+          <p className='medicationName'><strong>{medication.name}</strong></p>
           <p className='medicationDose'>Dose: {medication.dose}</p>
           <p className='medicationNotes'>Special Notes: {medication.notes}</p>
           <DeleteButton className='formBtn' endpoint='deleteMedication' id={medication._id} onDelete={handleDeleteMedication} />
           </div>
        ))}
        </span>
-  {/* <h1>Medications</h1>
-       {medications.map(medication => (
-        // .after you map you need the api name before => name is named after the model schema variable name const mealSelection
-        <div key= {medication._id}>
-          <p>Name: {medication.name}</p>
-          <p>Dose: {medication.dose}</p>
-          <p>Special Notes: {medication.notes}</p>
-          </div>
-       ))} */}
   </section>
   </div>
 )

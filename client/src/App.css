@@ -349,3 +349,27 @@ body {
   border-bottom: 2px solid rgba(131, 120, 110, 0.966);
   color: rgba(218, 106, 54, 0.986);
 }
+
+.medicalIcon {
+  width: 35px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  /* flex-direction: left; */
+  /* flex-wrap: wrap; */
+}
+
+.medicationIcon {
+  width: 80px;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+ 
+}
+.medicalName, .medicalAllergy {
+  color: red;
+}
+
+.cardBtn {
+  margin: 10px;
+}

@@ -1,8 +1,17 @@
 
 import React from 'react'
+import { useNavigate } from 'react-router-dom';
 
 
-const Card = ({tag, img, title, description, imgIcon, subName, subDesc}) => {
+
+const Card = ({tag, img, title, description, imgIcon, subName, subDesc, route}) => {
+
+    const navigate = useNavigate();
+
+    const handleButtonClick = () => {
+        navigate(route);
+    }
+
   return (
     <div className='main'>
         <div className='container'>
@@ -24,7 +33,8 @@ const Card = ({tag, img, title, description, imgIcon, subName, subDesc}) => {
                                     <span className='cardProfileInfoDesc'>{subDesc}</span>
                                     </div>
                                     </div>
-                                    {/* <a href='#' className='cardButton'>Read More</a> */}
+                                    <button className='cardBtn'onClick={handleButtonClick}>Learn More</button>
+                                    {/* <button className='cardBtn'onClick={handleButtonClick}>Learn More</button> */}
                                     <div className='cardProfileImg'>
                                     
                                    

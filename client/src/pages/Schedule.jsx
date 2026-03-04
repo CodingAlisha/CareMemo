@@ -2,6 +2,8 @@ import React from 'react'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 import MainBanner from '../components/MainBanner';
+import Banner from '../components/Banner';
+import planner from '../assets/planner.jpeg'
 import DeleteButton from '../components/DeleteButton';
 
 
@@ -28,7 +30,8 @@ const UpcomingSchedule = () => {
     <div>
        <h1 className='scheduleH1'>Upcoming Events & Appointments</h1>
 
-       <MainBanner />
+       {/* <MainBanner /> */}
+       <Banner img={planner} title={'Schedule'}/>
 
        <Link to='/add-schedule' className='nav-link'>Add New Event</Link>
 

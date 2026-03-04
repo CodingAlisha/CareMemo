@@ -2,6 +2,8 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react'
 import MainBanner from '../components/MainBanner';
+import Banner from '../components/Banner';
+import groupPhysicians from '../assets/groupPhysicians.jpg';
 import DeleteButton from '../components/DeleteButton';
 
 
@@ -29,7 +31,8 @@ const Physicians = () => {
 
        <h1 className='physicianH1'>Physicians</h1>
 
-       <MainBanner />
+       {/* <MainBanner /> */}
+       < Banner img={groupPhysicians} title={'Manage Physicians'} />
 
        <Link to='/add-physician' className='nav-link'>Add New Physician</Link>
 
@@ -37,7 +40,7 @@ const Physicians = () => {
        {physicians.map(physician => (
         <div className='physicianContainer' key= {physician._id}>
           <p className='physicianName'>{physician.name}</p>
-          <p className='physicianSpecialty'>Specialty: {physician.specialty}</p>
+          <p className='physicianSpecialty'>{physician.specialty}</p>
           <p className='physicianContact'>Contact: {physician.contact}</p>
           <DeleteButton endpoint={'deletePhysician'} id={physician._id} onDelete={handleDelete} />
           </div>

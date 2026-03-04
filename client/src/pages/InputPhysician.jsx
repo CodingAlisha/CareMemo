@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import MainBanner from '../components/MainBanner';
 
 
 const InputPhysician = () => {
@@ -36,6 +37,15 @@ const InputPhysician = () => {
         navigate("/list-physicians");
       };
 
+    //   const digits = value.replace(/\D/g, '').slice(0, 10); {
+    //     if (digits.length <=3) return digits;
+    //   if (digits.length <=6) return `${digits.slice(0,3)}--${digits.slice(3)}`;
+    //   return 
+    //     `${digits.slice(0,3)}--${digits.slice(3,6)}--${digits.slice(6)}`;
+      
+    //   };
+      
+
     return (
         <div className='formContainer'>
             <h1 className='formH1'>Add Physician</h1>
@@ -69,6 +79,16 @@ const InputPhysician = () => {
             placeholder=''
             required
             />
+
+            {/* <label htmlFor="Contact">Contact Number</label>
+            <input className='formTextArea'
+            name='contact'
+            value={formData.contact}
+            onChange={handleChange}
+            placeholder='555-123-4567'
+            maxLength={10}
+            required
+            /> */}
 
             <button className='formBtn'type='submit'>Save</button>
             </form>

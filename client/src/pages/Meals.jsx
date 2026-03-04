@@ -2,6 +2,8 @@ import React from 'react'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 import MainBanner from '../components/MainBanner';
+import Banner from '../components/Banner';
+import freshMeals from '../assets/freshMeals.jpeg';
 import DeleteButton from '../components/DeleteButton';
 
 
@@ -30,7 +32,8 @@ const MealList = () => {
       
        <h1 className='mealH1'>Favorite Meals</h1>
 
-       <MainBanner />
+       {/* <MainBanner /> */}
+       <Banner img={freshMeals} title={'Personalize Meals'}/>
 
        <Link to='/add-meals' className='nav-link'>Add New Meal</Link>
        
@@ -39,7 +42,7 @@ const MealList = () => {
         // .name is named after the model schema variable name const mealSelection
         <div className='mealContainer' key= {meal._id}>
           <p className='mealName'>{meal.name}</p>
-          <p className='mealMeal'>Meal: {meal.mealType}</p>
+          <p className='mealMeal'>{meal.mealType}</p>
           <p className='mealInstructions'>Special Instructions: {meal.directions}</p>
           <DeleteButton endpoint='deleteMeals' id={meal._id} onDelete={handleDelete} />
           </div>

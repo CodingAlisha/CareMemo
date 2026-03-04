@@ -1,6 +1,7 @@
 import React from 'react'
 import { useEffect, useState } from 'react';
 import DeleteButton from '../components/DeleteButton';
+import medicalIcon from '../assets/medicalIcon.jpg';
 // DELETE BUTTON NOT WORKING
 
 
@@ -28,6 +29,8 @@ const MedicalList = () => {
        {medicals.map(medicalAlert => (
         // .after you map you need the api name before => name is named after the model schema variable name const mealSelection
         <div key= {medicalAlert._id}>
+          {/* <img src={medicalIcon} alt= 'Medical Alert Icon' width={18} height={18}/>
+          <span>{medicalAlert.name}</span> */}
           <p>Name: {medicalAlert.name}</p>
           <p>Allergy: {medicalAlert.allergy}</p>
           <p>Special Notes: {medicalAlert.notes}</p>
@@ -39,4 +42,3 @@ const MedicalList = () => {
 }
 
 export default MedicalList;
-

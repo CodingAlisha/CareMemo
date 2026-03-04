@@ -1,6 +1,7 @@
 import React from 'react'
 import healthBannerTwo from '../assets/healthBannerTwo.jpg';
 
+
 const MainBanner = () => {
     return (
         <div
