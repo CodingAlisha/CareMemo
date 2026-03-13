@@ -9,8 +9,10 @@ const InputSchedule = () => {
         eventType: '',
         reason: '',
         status: '',
+        date: ''
     });
 
+    
     const handleChange = (e) => {
         setFormData ({
             ...formData, 
@@ -74,6 +76,15 @@ const InputSchedule = () => {
             </select>
             </div>
         
+            <label htmlFor="Date">Date & Time</label>
+            <input type='datetime-local' className='formTextArea'
+            name='date'
+            value={formData.date}
+            onChange={handleChange}
+            required
+            />
+            
+
             <div>
             <label htmlFor="Reason">Reason for Visit</label>
             <textarea className='formTextArea'

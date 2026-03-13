@@ -373,3 +373,11 @@ body {
 .cardBtn {
   margin: 10px;
 }
+
+.mealSelect {
+  padding: 8px;
+  border-radius: 5px;
+  margin: 10px;
+  width: 40%;
+  color:rgba(131, 120, 110, 0.966);
+}

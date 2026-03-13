@@ -136,8 +136,8 @@ return (
         <div className='medicationContainer'key= {medication._id}>
            <img className='medicationIcon' src={medicationIcon} alt= 'Medical Alert Icon'/>
           <p className='medicationName'><strong>{medication.name}</strong></p>
-          <p className='medicationDose'>Dose: {medication.dose}</p>
-          <p className='medicationNotes'>Special Notes: {medication.notes}</p>
+          <p className='medicationDose'>{medication.dose}</p>
+          <p className='medicationNotes'>Special Notes: <strong>{medication.notes}</strong></p>
           <DeleteButton className='formBtn' endpoint='deleteMedication' id={medication._id} onDelete={handleDeleteMedication} />
           </div>
        ))}

@@ -9,10 +9,16 @@ import DeleteButton from '../components/DeleteButton';
 
 const MealList = () => {
   const [ meals, setMeals ] = useState([]);
+  const [ filter, setFilter ] = useState('ALL');
 
   const handleDelete = (id) => {
     setMeals((prev) => prev.filter((meal) => meal._id !== id));
   };
+
+  const filteredMeals = meals.filter ((meal) => {
+    if (filter === 'ALL') return true;
+    return meal.mealType === filter;
+  });
 
   useEffect(( ) => {
     // fetch('http://localhost:3001/api/listMeals')
@@ -36,9 +42,19 @@ const MealList = () => {
        <Banner img={freshMeals} title={'Personalize Meals'}/>
 
        <Link to='/add-meals' className='nav-link'>Add New Meal</Link>
+
+       <div>
+        <select className='mealSelect' onChange={(e) => setFilter (e.target.value)}>
+          <option value= 'ALL'>ALL MEALS</option>
+          <option value= 'BREAKFAST'>BREAKFAST</option>
+          <option value= 'LUNCH'>LUNCH</option>
+          <option value= 'DINNER'>DINNER</option>
+          <option value= 'SNACK'>SNACK</option>
+          </select>
+       </div>
        
        <span className='cardSpan'>
-       {meals.map(meal => (
+       {filteredMeals.map(meal => (
         // .name is named after the model schema variable name const mealSelection
         <div className='mealContainer' key= {meal._id}>
           <p className='mealName'>{meal.name}</p>

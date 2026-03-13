@@ -14,6 +14,17 @@ const UpcomingSchedule = () => {
     setSchedules((prev) => prev.filter((schedule) => schedule._id !== id));
   };
 
+
+  const formateDate = (date) => {
+    if (!date) return '';
+    const scheduleDate = new Date(date);
+    return scheduleDate.toLocaleString('en-US', {
+      dateStyle: 'medium', 
+      timeStyle: 'short'
+    });
+  };
+
+
   useEffect(( ) => {
     // fetch('http://localhost:3001/api/listMeals')
     // this api name is what is in the controller
@@ -42,6 +53,7 @@ const UpcomingSchedule = () => {
           <p className='scheduleName'>{schedule.eventType}</p>
           <p className='scheduleReason'>Reason: {schedule.reason}</p>
           <p className='scheduleStatus'>Status: {schedule.status}</p>
+          <p className='scheduleStatus'>Date & Time: {formateDate(schedule.date)}</p>
           <DeleteButton endpoint='deleteSchedule' id={schedule._id} onDelete={handleDelete} />
           </div>
        ))}
