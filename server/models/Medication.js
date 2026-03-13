@@ -4,17 +4,19 @@ const medicationSchema = new mongoose.Schema ({
     name: {
         type: String,
         required: false,
-        uppercase: true
+        uppercase: true,
+        required: true
     },
     dose: {
         type: String,
         required: false,
-        uppercase: true
+        uppercase: true,
+        required: true
 
     },
     notes: {
         type: String,
-        required: false,
+        required: true,
         minLength: 3,
         maxLength: 200
         

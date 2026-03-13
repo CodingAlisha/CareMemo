@@ -5,6 +5,7 @@ const Medical = require("../models/Medical");
 const Medication = require("../models/Medication");
 const User = require("../models/User");
 const jwt = require('jsonwebtoken');
+const { isValidPhoneNumber } = require('libphonenumber-js');
 
 
 
@@ -161,8 +162,12 @@ module.exports.getPhysician = async (req, res) => {
 
 // POST TO CREATE PHYSICIAN
 module.exports.createPhysician = async (req, res) => {
+  const { contact } = req.body
   try {
     const newPhysician = await Physician.create(req.body); // save the data
+    if (!isValidPhoneNumber(contact)) {
+      return res.status(400).json({ error: 'Invalid phone number'})
+    }
     res.status(201).json(newPhysician);
   } catch (err) {
     res.status(400).json({ error: err.message });
@@ -175,7 +180,7 @@ module.exports.createPhysician = async (req, res) => {
 module.exports.getMeal = async (req, res) => {
   try {
     // MUST HAVE router.get listMeals
-    const listMeals = await Meal.find();
+    const listMeals = await Meal.find(req.query);
     res.json(listMeals);
   } catch (err) {
     res.status(500).json({ error: 'Failed to fetch listMeals'});
@@ -267,3 +272,15 @@ module.exports.checkUser = (req, res) => {
     res.status(401).json({ message: 'Unauthorized' });
   }
 };
+
+module.exports.createEvent = async (req, res ) => {
+  try {
+    const event = await Event.create({
+      date:new Date(req.body.date),
+      user:req.user.id
+    });
+    res.status(201).json(event);
+  } catch ( error ){
+    res.status(400).json({ message: error.message});
+  }
+}

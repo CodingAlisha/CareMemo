@@ -8,6 +8,10 @@ const scheduleSchema = new mongoose.Schema ({
         enum: 
             ['DOCTOR', 'PRACTICE', 'MEETING', 'DANCE', 'OTHER']
     },
+    date: {
+        type: Date, 
+        required: true, 
+    },
     reason: {
         type: String, 
         required: true, 
