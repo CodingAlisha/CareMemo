@@ -168,7 +168,7 @@ body {
 
 .landingBanner {
   height: 60vh;
-
+  width: 100%;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -380,4 +380,27 @@ body {
   margin: 10px;
   width: 40%;
   color:rgba(131, 120, 110, 0.966);
+}
+
+.confirmPasswordError, .passwordError {
+  color: red;
+  padding-bottom: 20px;
+}
+
+.formTitle {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.landingText {
+  display: block;
+  padding: 10px 10px 16px;
+  margin-top: 20px;
+  width:fit-content;
+  color:#636060;
+  background-color:#fff;
+  border-radius:10px ;
+  font-family: "Inter", sans-serif;
+  /* font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  text-align:justify; */
+
 }

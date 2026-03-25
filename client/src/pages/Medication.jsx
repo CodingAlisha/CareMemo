@@ -13,7 +13,10 @@ const MedicationList = () => {
 
   useEffect(( ) => {
     // fetch('http://localhost:3001/api/listMeals')
-    fetch ('/api/medication')
+    fetch ('/api/medication', {
+      method: 'GET',
+      credentials: 'include'
+    })
     .then(res => res.json ())
     .then(data => {
       console.log("DATA FROM API:", data);

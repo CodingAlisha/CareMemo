@@ -16,7 +16,9 @@ const Physicians = () => {
 
   useEffect(( ) => {
     // fetch('http://localhost:3001/api/physician')
-    fetch ('/api/physician')
+    fetch ('/api/physician', {
+      credentials: 'include'
+    })
     .then(res => res.json ())
     .then(data => {
       console.log("DATA FROM API:", data);

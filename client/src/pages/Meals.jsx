@@ -14,7 +14,6 @@ const MealList = () => {
   const handleDelete = (id) => {
     setMeals((prev) => prev.filter((meal) => meal._id !== id));
   };
-
   const filteredMeals = meals.filter ((meal) => {
     if (filter === 'ALL') return true;
     return meal.mealType === filter;
@@ -22,7 +21,9 @@ const MealList = () => {
 
   useEffect(( ) => {
     // fetch('http://localhost:3001/api/listMeals')
-    fetch ('/api/listMeals')
+    fetch ('/api/listMeals', {
+      credentials: 'include'
+    })
     .then(res => res.json ())
     .then(data => {
       console.log("DATA FROM API:", data);

@@ -12,6 +12,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import DeleteButton from '../components/DeleteButton';
 import medicalIcon from '../assets/medicalIcon.jpg';
 import medicationIcon from '../assets/medicationIcon.jpg';
+
 // import { getMedication } from '../components/ServicesMedication';
 // import { getMedicalAlert } from '../components/ServicesMedical';
 
@@ -30,7 +31,11 @@ const Home = () => {
 
   useEffect(( ) => {
     // fetch('http://localhost:3001/api/listMeals')
-    fetch ('/api/medication')
+    fetch ('/api/medication', {
+      method: 'GET',
+      credentials: 'include'
+    })
+
     .then(res => res.json ())
     .then(data => {
       console.log("DATA FROM API:", data);
@@ -41,7 +46,10 @@ const Home = () => {
 
   useEffect(( ) => {
     // fetch('http://localhost:3001/api/listMeals')
-    fetch ('/api/medicalAlert')
+    fetch ('/api/medicalAlert', {
+      method: 'GET',
+      credentials: 'include'
+    })
     .then(res => res.json ())
     .then(data => {
       console.log("DATA FROM API:", data);
@@ -86,6 +94,7 @@ const Home = () => {
  
 return (
   <div>
+
     <h1 className='heading'>Welcome, Customize a Care Plan</h1>
     <section>
     

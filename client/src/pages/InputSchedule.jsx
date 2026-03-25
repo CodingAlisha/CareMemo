@@ -23,12 +23,12 @@ const InputSchedule = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         console.log("Submitting:", formData);
-      
+
         const res = await fetch("/api/schedule", {
           method: "POST",
           headers: {
-            "Content-Type": "application/json",
-          },
+            "Content-Type": "application/json",},
+          credentials: 'include',
           body: JSON.stringify(formData),
         });
       

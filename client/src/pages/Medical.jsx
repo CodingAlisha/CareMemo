@@ -14,7 +14,11 @@ const MedicalList = () => {
 
   useEffect(( ) => {
     // fetch('http://localhost:3001/api/listMeals')
-    fetch ('/api/medicalAlert')
+    fetch ('/api/medicalAlert', {
+      method: 'GET',
+      credentials: 'include'
+    }
+    )
     .then(res => res.json ())
     .then(data => {
       console.log("DATA FROM API:", data);

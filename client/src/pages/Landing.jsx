@@ -44,6 +44,12 @@ const Landing = () => {
 return (
   <div>
     <MainBanner />
+    <p className='landingText'>CareMemo is one place for managing your loved one's care plan. Share updates, track progress, and keep every caregiver and family member on the same page...so you can focus on less coordinating and more on who matters most!From medication schedules and doctor appointments to daily notes and care milestones, CareMemo keeps everything organized in one secure place, No more scattered spreadsheets, or endless group texts. Just clear connected care for the people who matter most.When it comes to caring for someone you love, you deserve a platform built with the same dedication. CareMemo is the trusted choice for families who want simplicity, clarity, and peace of mid all in one place. Get started today!</p>
+
+    {/* <div className='landingText'>From medication schedules and doctor appointments to daily notes and care milestones, CareMemo keeps everything organized in one secure place, No more scattered spreadsheets, or endless group texts. Just clear connected care for the people who matter most.</div>
+
+    <div className='landingText'>When it comes to caring for someone you love, you deserve a platform built with the same dedication. CareMemo is the trusted choice for families who want simplicity, clarity, and peace of mid all in one place. Get started today!</div> */}
+
     <span className='cardSpan'>
   {mainData.map((card, index) => (
   

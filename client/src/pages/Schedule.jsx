@@ -24,11 +24,12 @@ const UpcomingSchedule = () => {
     });
   };
 
-
   useEffect(( ) => {
     // fetch('http://localhost:3001/api/listMeals')
     // this api name is what is in the controller
-    fetch ('/api/schedule')
+    fetch ('/api/schedule', {
+      credentials: 'include'
+    })
     .then(res => res.json ())
     .then(data => {
       console.log("DATA FROM API:", data);

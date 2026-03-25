@@ -1,7 +1,9 @@
 // import React, { useState } from 'react';
 import React from 'react'
 import { useEffect, useState } from 'react'
+import { NavLink } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+
 
 
 const Login = () => {
@@ -45,11 +47,12 @@ const Login = () => {
 
   return (
     <div>
+      
       <form onSubmit={handleSubmit}>
       {/* <form > */}
         <h2>Login</h2>
 
-        <label htmlFor="email">Email</label>
+        <label htmlFor="email" className='formTitle'>Email</label>
         <input
           type="text"
           name="email"
@@ -59,7 +62,7 @@ const Login = () => {
         />
         <div className="email error">{emailError}</div>
 
-        <label htmlFor="password">Password</label>
+        <label htmlFor="password" className='formTitle'>Password</label>
         <input
           type="password"
           name="password"
@@ -67,8 +70,9 @@ const Login = () => {
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-        <div className="password error">{passwordError}</div>
-        {/* <button onClick={(e)=>handleSubmit(e)}>Register</button> */}
+        <div className="passwordError">{passwordError}</div>
+       
+        <NavLink to='/signup' className='nav-link'>Need to Create an Account? Sign Up</NavLink>
 
         <button type="submit">Log In</button>
       </form>
