@@ -8,6 +8,7 @@ const MedicalAlert = require('../models/Medical');
 const Medication = require('../models/Medication');
 const Schedule = require('../models/Schedule');
 const Physician = require('../models/Physician');
+const { requireAuth } = require('../middleware/requireAuth');
 
 
 // user registration signup page
@@ -27,25 +28,29 @@ router.get('/logout', userController.logout);
 
 router.get('/', userController.getLanding);
 
-router.get('/schedule', userController.getSchedule);
+// AUTHENTICATED ROUTES W/REQUIRE AUTH
 
-router.post('/schedule', userController.createSchedule);
+// router.get('/home', requireAuth, userController.getHome);
 
-router.get('/listMeals', userController.getMeal);
+router.get('/schedule', requireAuth, userController.getSchedule);
 
-router.post('/listMeals', userController.createMeal);
+router.post('/schedule', requireAuth, userController.createSchedule);
 
-router.get('/physician', userController.getPhysician);
+router.get('/listMeals', requireAuth, userController.getMeal);
 
-router.post('/physician', userController.createPhysician);
+router.post('/listMeals', requireAuth, userController.createMeal);
 
-router.get('/medicalAlert', userController.getMedicalAlert);
+router.get('/physician', requireAuth, userController.getPhysician);
 
-router.post('/medicalAlert', userController.createMedicalAlert);
+router.post('/physician', requireAuth, userController.createPhysician);
 
-router.get('/medication', userController.getMedication);
+router.get('/medicalAlert', requireAuth, userController.getMedicalAlert);
 
-router.post('/medication', userController.createMedication);
+router.post('/medicalAlert', requireAuth, userController.createMedicalAlert);
+
+router.get('/medication', requireAuth, userController.getMedication);
+
+router.post('/medication', requireAuth, userController.createMedication);
 
 router.delete('/deleteMeals/:id', userController.deleteItem(Meal));
 
@@ -57,7 +62,10 @@ router.delete('/deleteSchedule/:id', userController.deleteItem(Schedule));
 
 router.delete('/deleteMedication/:id', userController.deleteItem(Medication));
 
-router.get('/authUser', userController.checkUser);
+
+router.get('/checkUser', requireAuth, userController.checkUser);
+
+// router.get('/authUser', requireAuth, userController.authUser);
 
 
 module.exports = router;

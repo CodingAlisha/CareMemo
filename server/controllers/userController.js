@@ -45,32 +45,28 @@ return errors;
 const maxAge = 3 * 24 * 60 * 60;
 
 const createToken = (id) => {
-  // console.log('SECRET:', process.env.JWT_SECRET);
-  return jwt.sign({id}, process.env.JWT_SECRET,{
+  return jwt.sign({userId: id}, process.env.JWT_SECRET,{
     expiresIn: maxAge
   });
-    // return jwt.sign({ id }, 'careMemo application secret', {
-    //     expiresIn: maxAge
-    // });
 };
 
 
 // USER ROUTES FOR LOGIN
 module.exports.getSignUp = (req, res) => {
-  // res.render('signUp');
-  // res.json('signUp');
   res.json({ message: 'success getting signup' });
 }
 
 module.exports.createSignUp = async (req, res) => {
-  const { email, password } = req.body;
+  const { firstName, lastName, email, password } = req.body;
   
   try {
-      const newUser = await User.create({ email, password });
+      const newUser = await User.create({ firstName, lastName, email, password });
       const token = createToken(newUser._id);
       res.cookie('jwt', token, {
         httpOnly:true, 
+        // sameSite: 'strict' in production
         sameSite: 'lax',
+        // secure true in production(HTTPS)
         secure: false,
         maxAge: maxAge * 1000
       });
@@ -93,6 +89,7 @@ module.exports.createLogin = async  (req, res) => {
   const { email, password } = req.body;
   try {
       const user = await User.login(email, password);
+      // create token
       const token = createToken(user._id);
       res.cookie('jwt', token, {
         httpOnly:true,
@@ -122,15 +119,23 @@ module.exports.logout = (req, res) => {
 };
 
 
+
+
 //GET ROUTE FOR MEALS
+
+// module.exports.getHome = (req, res) => {
+//   res.json({ message: 'success home get' });
+// }
+
 module.exports.getLanding = (req, res) => {
     res.json({ message: 'success landing get' });
 }
 
 // GET ROUTE FOR SCHEDULE
 module.exports.getSchedule = async (req, res) => {
+  console.log('GET SCHEDULE USER ID:', req.userId);
   try {
-    const schedule = await Schedule.find();
+    const schedule = await Schedule.find({ user: req.userId });
    res.json(schedule);
   } catch (err) {
     res.status(500).json({ error: 'Failed to fetch schedule'})
@@ -141,8 +146,9 @@ module.exports.getSchedule = async (req, res) => {
 // POST TO CREATE SCHEDULE
 module.exports.createSchedule = async (req, res) => {
   try {
-    const newSchedule = await Schedule.create(req.body); // save the data
-    res.status(201).json(newSchedule);
+    const newSchedule = await Schedule.create({
+      ...req.body, user: req.userId}); // save the data
+    res.status(201).json([newSchedule]);
   } catch (err) {
     res.status(400).json({ error: err.message });
   }
@@ -153,7 +159,7 @@ module.exports.createSchedule = async (req, res) => {
     // Import physician model
 module.exports.getPhysician = async (req, res) => {
     try {
-        const physicians = await Physician.find();
+        const physicians = await Physician.find({ user: req.userId });
         res.json(physicians);
     } catch (err) {
         res.status(500).json({ error: 'Failed to fetch physicians'});
@@ -164,7 +170,8 @@ module.exports.getPhysician = async (req, res) => {
 module.exports.createPhysician = async (req, res) => {
   const { contact } = req.body
   try {
-    const newPhysician = await Physician.create(req.body); // save the data
+    const newPhysician = await Physician.create({
+      ...req.body, user: req.userId}); // save the data
     if (!isValidPhoneNumber(contact)) {
       return res.status(400).json({ error: 'Invalid phone number'})
     }
@@ -179,8 +186,9 @@ module.exports.createPhysician = async (req, res) => {
  // Import meal model
 module.exports.getMeal = async (req, res) => {
   try {
-    // MUST HAVE router.get listMeals
-    const listMeals = await Meal.find(req.query);
+    // MUST HAVE router.get listMeals req.query
+    const listMeals = await Meal.find({ user: req.userId });
+    console.log('USER ID:', req.userId);
     res.json(listMeals);
   } catch (err) {
     res.status(500).json({ error: 'Failed to fetch listMeals'});
@@ -192,8 +200,9 @@ module.exports.getMeal = async (req, res) => {
 module.exports.createMeal = async (req, res) => {
   console.log(req.body);
   try {
-    const newMeal = await Meal.create(req.body);
-    res.status(201).json(newMeal);
+    const newMeal = await Meal.create({
+      ...req.body, user: req.userId});
+    res.status(201).json([newMeal]);
   } catch (err) {
     res.status(400).json({ error: err.message });
   }
@@ -203,7 +212,7 @@ module.exports.createMeal = async (req, res) => {
 // REMEMBER TO IMPORT MEDICAL FROM MODELS
 module.exports.getMedicalAlert = async (req, res) => {
   try {
-    const medicalAlertData = await Medical.find();
+    const medicalAlertData = await Medical.find({ user: req.userId });
    res.json(medicalAlertData);
   } catch (err) {
     res.status(500).json({ error: 'Failed to fetch medical'})
@@ -213,7 +222,8 @@ module.exports.getMedicalAlert = async (req, res) => {
 // POST TO CREATE MEDICAL ALERT
 module.exports.createMedicalAlert = async (req, res) => {
   try {
-    const newMedicalAlertData = await Medical.create(req.body); // save the data
+    const newMedicalAlertData = await Medical.create({
+      ...req.body, user: req.userId}); // save the data
     res.status(201).json(newMedicalAlertData);
   } catch (err) {
     res.status(400).json({ error: err.message });
@@ -224,7 +234,7 @@ module.exports.createMedicalAlert = async (req, res) => {
 // REMEMBER TO IMPORT MEDICATION FROM MODELS
 module.exports.getMedication = async (req, res) => {
   try {
-    const medicationList = await Medication.find();
+    const medicationList = await Medication.find({ user: req.userId });
    res.json(medicationList);
   } catch (err) {
     res.status(500).json({ error: 'Failed to fetch medication'})
@@ -234,7 +244,8 @@ module.exports.getMedication = async (req, res) => {
 // POST TO CREATE MEDICATION
 module.exports.createMedication = async (req, res) => {
   try {
-    const newMedication = await Medication.create(req.body); // save the data
+    const newMedication = await Medication.create({
+      ...req.body, user: req.userId}); // save the data
     res.status(201).json(newMedication);
   } catch (err) {
     res.status(400).json({ error: err.message });
