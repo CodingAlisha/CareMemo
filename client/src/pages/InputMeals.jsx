@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import NavBar from '../components/NavBar';
 
 
 const InputMeals = () => {
@@ -38,7 +39,11 @@ const InputMeals = () => {
       };
 
     return (
+
         <div className='formContainer'>
+
+            <NavBar/>
+            
             <h1 className='formH1'>Create Meal</h1>
 
             <form className='mealForm' onSubmit={handleSubmit}>

@@ -5,6 +5,7 @@ import MainBanner from '../components/MainBanner';
 import Banner from '../components/Banner';
 import groupPhysicians from '../assets/groupPhysicians.jpg';
 import DeleteButton from '../components/DeleteButton';
+import NavBar from '../components/NavBar';
 
 
 const Physicians = () => {
@@ -30,9 +31,10 @@ const Physicians = () => {
   
   return (
     <div>
+      <NavBar/>
 
        <h1 className='physicianH1'>Physicians</h1>
-
+      
        {/* <MainBanner /> */}
        < Banner img={groupPhysicians} title={'Manage Physicians'} />
 

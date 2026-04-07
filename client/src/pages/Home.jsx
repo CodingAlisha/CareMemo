@@ -12,6 +12,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import DeleteButton from '../components/DeleteButton';
 import medicalIcon from '../assets/medicalIcon.jpg';
 import medicationIcon from '../assets/medicationIcon.jpg';
+import NavBar from '../components/NavBar';
 
 // import { getMedication } from '../components/ServicesMedication';
 // import { getMedicalAlert } from '../components/ServicesMedical';
@@ -94,7 +95,8 @@ const Home = () => {
  
 return (
   <div>
-
+    <NavBar/>
+    
     <h1 className='heading'>Welcome, Customize a Care Plan</h1>
     <section>
     

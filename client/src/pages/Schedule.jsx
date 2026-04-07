@@ -5,6 +5,7 @@ import MainBanner from '../components/MainBanner';
 import Banner from '../components/Banner';
 import planner from '../assets/planner.jpeg'
 import DeleteButton from '../components/DeleteButton';
+import NavBar from '../components/NavBar';
 
 
 const UpcomingSchedule = () => {
@@ -40,6 +41,8 @@ const UpcomingSchedule = () => {
   
   return (
     <div>
+      <NavBar/>
+
        <h1 className='scheduleH1'>Upcoming Events & Appointments</h1>
 
        {/* <MainBanner /> */}

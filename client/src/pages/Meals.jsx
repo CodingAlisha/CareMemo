@@ -5,6 +5,7 @@ import MainBanner from '../components/MainBanner';
 import Banner from '../components/Banner';
 import freshMeals from '../assets/freshMeals.jpeg';
 import DeleteButton from '../components/DeleteButton';
+import NavBar from '../components/NavBar';
 
 
 const MealList = () => {
@@ -36,6 +37,7 @@ const MealList = () => {
   
   return (
     <div>
+      <NavBar/>
       
        <h1 className='mealH1'>Favorite Meals</h1>
 

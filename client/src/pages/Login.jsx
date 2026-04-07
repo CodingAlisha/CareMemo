@@ -3,6 +3,7 @@ import React from 'react'
 import { useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import NavBarMain from '../components/NavBarMain';
 
 
 
@@ -47,6 +48,7 @@ const Login = () => {
 
   return (
     <div>
+       <NavBarMain />
       
       <form onSubmit={handleSubmit}>
       {/* <form > */}

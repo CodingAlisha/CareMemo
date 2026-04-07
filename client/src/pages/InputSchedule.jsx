@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import NavBar from '../components/NavBar';
 
 
 const InputSchedule = () => {
@@ -40,6 +41,8 @@ const InputSchedule = () => {
 
     return (
         <div className='formContainer'>
+            <NavBar/>
+
             <h1 className='formH1'>Add Event</h1>
 
             <form className='mealForm' onSubmit={handleSubmit}>

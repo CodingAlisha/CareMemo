@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { isValidPhoneNumber } from 'libphonenumber-js';
 import MainBanner from '../components/MainBanner';
+import NavBar from '../components/NavBar';
 
 
 const InputPhysician = () => {
@@ -69,6 +70,8 @@ const InputPhysician = () => {
 
     return (
         <div className='formContainer'>
+            <NavBar/>
+
             <h1 className='formH1'>Add Physician</h1>
 
             <form className='mealForm' onSubmit={handleSubmit}>

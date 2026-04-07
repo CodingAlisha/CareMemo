@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import NavBar from '../components/NavBar';
 
 
 const InputMedication = () => {
@@ -40,6 +41,8 @@ const InputMedication = () => {
 
     return (
         <div className='formContainer'>
+            <NavBar/>
+
             <h1 className='formH1'>Add Medication</h1>
 
             <form className='mealForm' onSubmit={handleSubmit}>
@@ -50,6 +53,7 @@ const InputMedication = () => {
             value={formData.name || ''}
             onChange={handleChange}
             placeholder='ex: Advil'
+            required
             />
 
             <label htmlFor="Dose">Dose</label>
@@ -58,6 +62,7 @@ const InputMedication = () => {
             value={formData.dose || ''}
             onChange={handleChange}
             placeholder='ex: 25mg'
+            required
             />
 
 
@@ -67,6 +72,7 @@ const InputMedication = () => {
             value={formData.notes}
             onChange={handleChange}
             placeholder='1 per day'
+            required
             />
 
             <button className='formBtn'type='submit'>Save</button>

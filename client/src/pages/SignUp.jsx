@@ -3,6 +3,7 @@ import React from 'react'
 import { useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import NavBarMain from '../components/NavBarMain';
 
 
 const SignUp = () => {
@@ -59,6 +60,8 @@ const SignUp = () => {
 
   return (
     <div>
+       <NavBarMain />
+
       <form onSubmit={handleSubmit}>
       {/* <form > */}
         <h2>Sign Up</h2>

@@ -27,6 +27,7 @@ import InputMeals from './pages/InputMeals';
 //Import Components
 import Footer from './components/Footer';
 import NavBar from './components/NavBar.jsx';
+import NavBarMain from './components/NavBarMain.jsx';
 import InputPhysician from './pages/InputPhysician.jsx';
 import InputMedication from './pages/InputMedication.jsx';
 import InputSchedule from './pages/InputSchedule.jsx';
@@ -41,7 +42,7 @@ function App() {
   return (
     
     <BrowserRouter>
-    <NavBar/>
+    {/* <NavBar/> */}
     <Routes>
       {/* PUBLIC ROUTE*/}
       <Route path='/' element={<Landing/>} />
