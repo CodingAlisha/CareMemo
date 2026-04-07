@@ -21,7 +21,7 @@ const medicalSchema = new mongoose.Schema ({
     notes: {
         type: String,
         required: [true, 'Please enter notes or type none'],
-        minLength: 3,
+        minLength: 2,
         maxLength: 200
         
     }
