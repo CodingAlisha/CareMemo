@@ -6,7 +6,12 @@
     "test": "test"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha --exit --timeout 10000",
+    "test:user": "mocha test/user",
+    "test:medication": "mocha test/medication",
+    "test:physician": "mocha test/physician",
+    "test:schedule": "mocha test/schedule",
+    "test:meal": "mocha test/meal",
     "start": "node server.js",
     "dev": "nodemon server.js"
   },
@@ -26,6 +31,9 @@
     "validator": "^13.15.26"
   },
   "devDependencies": {
-    "nodemon": "^3.1.11"
+    "chai": "^6.2.2",
+    "mocha": "^11.7.5",
+    "nodemon": "^3.1.11",
+    "supertest": "^7.2.2"
   }
 }

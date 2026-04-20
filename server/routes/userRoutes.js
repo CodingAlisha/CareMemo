@@ -30,7 +30,6 @@ router.get('/', userController.getLanding);
 
 // AUTHENTICATED ROUTES W/REQUIRE AUTH
 
-// router.get('/home', requireAuth, userController.getHome);
 
 router.get('/schedule', requireAuth, userController.getSchedule);
 
@@ -65,7 +64,7 @@ router.delete('/deleteMedication/:id', userController.deleteItem(Medication));
 
 router.get('/checkUser', requireAuth, userController.checkUser);
 
-// router.get('/authUser', requireAuth, userController.authUser);
+
 
 
 module.exports = router;

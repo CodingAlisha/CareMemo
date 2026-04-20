@@ -18,15 +18,11 @@ const physicianSchema = new mongoose.Schema ({
         required: [true, "Please enter medical specialty"],
         uppercase: true,
         required: true
-
     },
     contact: {
         type: String,
         required: [true, "Please enter contact information"],
         required: true
-        // minLength: 10,
-        // maxLength: 11
-        
     }
 });
 

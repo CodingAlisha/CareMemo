@@ -12,7 +12,7 @@ const { isValidPhoneNumber } = require('libphonenumber-js');
 
 // handle errors
 const handleErrors = (err) => {
-    console.log(err.message, err.code);
+    // console.log(err.message, err.code);
     let errors = { email: '', password: ''};
 
 // incorrect email
@@ -114,19 +114,13 @@ module.exports.logout = (req, res) => {
     maxAge: 1
   })
   res.status(200).json({message: 'logged out'});
-  // res.cookie('jwt', '', {maxAge: 1});
-  // res.redirect('/');
+  // res.redirect('/').json({message: 'logged out and redirect to landing page'});
+  
 };
 
 
 
-
-//GET ROUTE FOR MEALS
-
-// module.exports.getHome = (req, res) => {
-//   res.json({ message: 'success home get' });
-// }
-
+// GET LANDING PAGE
 module.exports.getLanding = (req, res) => {
     res.json({ message: 'success landing get' });
 }
@@ -172,10 +166,11 @@ module.exports.createPhysician = async (req, res) => {
   try {
     const newPhysician = await Physician.create({
       ...req.body, user: req.userId}); // save the data
+      res.status(201).json(newPhysician);
+
     if (!isValidPhoneNumber(contact)) {
       return res.status(400).json({ error: 'Invalid phone number'})
     }
-    res.status(201).json(newPhysician);
   } catch (err) {
     res.status(400).json({ error: err.message });
   }
@@ -183,10 +178,9 @@ module.exports.createPhysician = async (req, res) => {
 
 
 // GET ROUTE FOR MEALS
- // Import meal model
 module.exports.getMeal = async (req, res) => {
   try {
-    // MUST HAVE router.get listMeals req.query
+    
     const listMeals = await Meal.find({ user: req.userId });
     console.log('USER ID:', req.userId);
     res.json(listMeals);
@@ -196,7 +190,7 @@ module.exports.getMeal = async (req, res) => {
 };
 
 // POST ROUTE FOR MEALS
-// MUST HAVE userController.createMeal
+
 module.exports.createMeal = async (req, res) => {
   console.log(req.body);
   try {
@@ -209,7 +203,6 @@ module.exports.createMeal = async (req, res) => {
 };
 
 // GET ROUTE FOR MEDICAL ALERT
-// REMEMBER TO IMPORT MEDICAL FROM MODELS
 module.exports.getMedicalAlert = async (req, res) => {
   try {
     const medicalAlertData = await Medical.find({ user: req.userId });
@@ -231,7 +224,6 @@ module.exports.createMedicalAlert = async (req, res) => {
 };
 
 // GET ROUTE FOR MEDICATION
-// REMEMBER TO IMPORT MEDICATION FROM MODELS
 module.exports.getMedication = async (req, res) => {
   try {
     const medicationList = await Medication.find({ user: req.userId });
@@ -269,10 +261,10 @@ module.exports.deleteItem = (Model) => async (req, res) => {
   }
 };
 
-// Added
+// CHECK USER FOR AUTH
 
 module.exports.checkUser = (req, res) => {
-  // console.log('Cookies:', req.cookies);
+
   const token = req.cookies.jwt;
   if (!token) return res.status(401).json({ message: 'Unauthorized' });
 
