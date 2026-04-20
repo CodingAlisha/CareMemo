@@ -74,7 +74,7 @@ const InputSchedule = () => {
             >
             <option value="">Select Event Status</option>
             <option value="SCHEDULED">Scheduled</option>
-            <option value="CANCELLED">Cancelled</option>
+            <option value="CANCELED">Canceled</option>
             <option value="COMPLETED">Completed</option>
             </select>
             </div>

@@ -23,7 +23,7 @@ const SignUp = () => {
     console.log(email, password);
 
     
-      // if (password !== confirmPassword) err.confirmPassword = 'Passwords do not match';
+      // MAKE SURE PASSWORDS MATCH
     
       if (password !== confirmPassword) {
         setConfirmPasswordError('Passwords do not match');
@@ -49,7 +49,7 @@ const SignUp = () => {
       }
 
       if (data.user) {
-        // window.location = '/home';
+        
         setTimeout(() => navigate('/home'), 100);
       }
 
@@ -63,7 +63,7 @@ const SignUp = () => {
        <NavBarMain />
 
       <form onSubmit={handleSubmit}>
-      {/* <form > */}
+     
         <h2>Sign Up</h2>
 
 
@@ -117,7 +117,7 @@ const SignUp = () => {
         <div className="confirmPasswordError">{confirmPasswordError}</div>
 
         <NavLink to='/login' className='nav-link'>Already have an account? Log In</NavLink>
-        {/* <button onClick={(e)=>handleSubmit(e)}>Register</button> */}
+        
 
         <button type="submit">Register</button>
       </form>

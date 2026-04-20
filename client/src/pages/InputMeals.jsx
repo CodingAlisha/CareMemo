@@ -56,14 +56,6 @@ const InputMeals = () => {
             placeholder='ex: Turkey Sandwich'
             />
 
-            {/* <label htmlFor="Meal Type">Meal Type</label>
-            <input className='formInput'
-            name='mealType'
-            value={formData.mealType || ''}
-            onChange={handleChange}
-            placeholder='ex: Breakfast'
-            /> */}
-
             <select className='formSelect'
             name="mealType"
             value={formData.mealType}

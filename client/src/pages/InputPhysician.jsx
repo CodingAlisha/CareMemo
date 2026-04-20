@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { isValidPhoneNumber } from 'libphonenumber-js';
-import MainBanner from '../components/MainBanner';
 import NavBar from '../components/NavBar';
 
 
@@ -16,13 +15,6 @@ const InputPhysician = () => {
         specialty: '',
         contact: '',
     });
-
-    // const handleChange = (e) => {
-    //     setFormData ({
-    //         ...formData, 
-    //         [e.target.name]: e.target.value,
-    //     });
-    // };
 
 
     const formatPhoneNumber = ( value ) => {
@@ -50,24 +42,22 @@ const InputPhysician = () => {
         if (!isValidPhoneNumber(formData.contact)){
            setError('Please enter a valid phone number')
         }
-        // console.log("Submitting:", formData);
+       
       
         const res = await fetch("/api/physician", {
           method: "POST",
           headers: {
-            "Content-Type": "application/json",
-          },
+            "Content-Type": "application/json",},
+          credentials: 'include',
           body: JSON.stringify(formData),
-          credentials: 'include'
         });
       
         const data = await res.json();
-        // console.log("Response:", data);
+    
       
         navigate("/list-physicians");
       };
       
-
     return (
         <div className='formContainer'>
             <NavBar/>
@@ -96,7 +86,7 @@ const InputPhysician = () => {
 
 
             <label htmlFor="Contact">Contact Number</label>
-            {/* <textarea className='formTextArea' */}
+           
             <input type='tel' className='formTextArea'
             name='contact'
             minLength={10}
@@ -106,16 +96,6 @@ const InputPhysician = () => {
             placeholder='ex: 888-888-8888'
             required
             />
-
-            {/* <label htmlFor="Contact">Contact Number</label>
-            <input className='formTextArea'
-            name='contact'
-            value={formData.contact}
-            onChange={handleChange}
-            placeholder='555-123-4567'
-            maxLength={10}
-            required
-            /> */}
 
             <button className='formBtn'type='submit'>Save</button>
             </form>

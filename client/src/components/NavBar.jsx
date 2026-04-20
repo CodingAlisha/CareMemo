@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom';
 import api from '../api/api';
 
+// NAVBAR WITH REQ. AUTH
 
 const NavBar = () => {
 
@@ -16,7 +17,7 @@ const NavBar = () => {
   return (
     <div className='Navbar'>
         <nav>
-            {/* <NavLink to='/' className='nav-link'>Landing</NavLink> */}
+           
             <NavLink to='/home' className='nav-link'>Home</NavLink>
             <NavLink to='/list-meals' className='nav-link'>Meals</NavLink>
             <NavLink to='/list-physicians' className='nav-link'>Physicians</NavLink>

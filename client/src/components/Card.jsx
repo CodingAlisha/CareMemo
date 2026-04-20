@@ -2,7 +2,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
 
-
+// LANDING PAGE CARD TEMPLATE
 
 const Card = ({tag, img, title, description, imgIcon, subName, subDesc, route}) => {
 
@@ -34,7 +34,6 @@ const Card = ({tag, img, title, description, imgIcon, subName, subDesc, route}) 
                                     </div>
                                     </div>
                                     <button className='cardBtn'onClick={handleButtonClick}>Learn More</button>
-                                    {/* <button className='cardBtn'onClick={handleButtonClick}>Learn More</button> */}
                                     <div className='cardProfileImg'>
                                     
                                    

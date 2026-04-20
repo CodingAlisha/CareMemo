@@ -1,6 +1,8 @@
-// Protect the frontend Routes
+
 
 import { Navigate, Outlet } from "react-router-dom";
+
+// Protect the frontend Routes
 
 const RequireAuth = () => {
     const user = localStorage.getItem('user');

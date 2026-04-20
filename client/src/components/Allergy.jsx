@@ -2,7 +2,7 @@ import React from 'react'
 
 
 
-
+// CARD DATA
 
 const Card = () => {
   return (

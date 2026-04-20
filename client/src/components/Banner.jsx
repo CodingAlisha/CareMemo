@@ -1,6 +1,6 @@
 import React from 'react'
 
-
+// REUSABLE BANNER REQUIRE AUTH
 
 const Banner = ({img, title}) => {
     return (

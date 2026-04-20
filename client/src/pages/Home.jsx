@@ -31,7 +31,7 @@ const Home = () => {
   };
 
   useEffect(( ) => {
-    // fetch('http://localhost:3001/api/listMeals')
+    
     fetch ('/api/medication', {
       method: 'GET',
       credentials: 'include'
@@ -46,7 +46,7 @@ const Home = () => {
   }, []);
 
   useEffect(( ) => {
-    // fetch('http://localhost:3001/api/listMeals')
+    
     fetch ('/api/medicalAlert', {
       method: 'GET',
       credentials: 'include'
@@ -104,7 +104,7 @@ return (
     <Link to='/add-medical' className='nav-link'>Add Medical Alert</Link>
     <span className='cardSpan'>
        {medicals.map(medicalAlert => (
-        // .after you map you need the api name before => name is named after the model schema variable name const mealSelection
+       
         <div className='medicalContainer' key= {medicalAlert._id}>
           <img className='medicalIcon' src={medicalIcon} alt= 'Medical Alert Icon'/>
           <p className='medicalName'><strong>{medicalAlert.name}</strong></p>
@@ -143,7 +143,7 @@ return (
 
        <span className='cardSpan'>
        {medications.map(medication => (
-        // .after you map you need the api name before => name is named after the model schema variable name const mealSelection
+       
         <div className='medicationContainer'key= {medication._id}>
            <img className='medicationIcon' src={medicationIcon} alt= 'Medical Alert Icon'/>
           <p className='medicationName'><strong>{medication.name}</strong></p>

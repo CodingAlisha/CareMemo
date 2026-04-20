@@ -3,15 +3,13 @@ import { NavLink } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom';
 import api from '../api/api';
 
+// NAVBAR WITHOUT REQ. AUTH
 
 const NavBarMain = () => {
 
   const navigate = useNavigate();
 
-//   const handleLogout = async () => {
-//     await api.get('api/logout');
-//     navigate('/');
-//   };
+
 
   return (
     <div className='Navbar'>

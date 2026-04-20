@@ -1,6 +1,7 @@
 import React from 'react'
 import healthBannerTwo from '../assets/healthBannerTwo.jpg';
 
+// LANDING BANNER NO AUTH REQ.
 
 const MainBanner = () => {
     return (

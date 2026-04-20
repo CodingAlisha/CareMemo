@@ -1,5 +1,6 @@
 import React from 'react'
 
+// CAREMEMO FOOTER
 
 const Footer = () => {
   return (

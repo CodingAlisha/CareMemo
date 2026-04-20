@@ -17,7 +17,7 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // console.log(email, password);
+    
 
     // reset errors
     setEmailError('');
@@ -38,7 +38,7 @@ const Login = () => {
       }
 
       if (data.user) {
-        // window.location = '/home';
+        
         setTimeout(() => navigate('/home'), 100);
       }
 
@@ -51,7 +51,7 @@ const Login = () => {
        <NavBarMain />
       
       <form onSubmit={handleSubmit}>
-      {/* <form > */}
+     
         <h2>Login</h2>
 
         <label htmlFor="email" className='formTitle'>Email</label>

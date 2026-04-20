@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react'
-import MainBanner from '../components/MainBanner';
 import Banner from '../components/Banner';
 import groupPhysicians from '../assets/groupPhysicians.jpg';
 import DeleteButton from '../components/DeleteButton';
@@ -16,7 +15,7 @@ const Physicians = () => {
   };
 
   useEffect(( ) => {
-    // fetch('http://localhost:3001/api/physician')
+    
     fetch ('/api/physician', {
       credentials: 'include'
     })
@@ -26,7 +25,7 @@ const Physicians = () => {
       setPhysicians(data);
     })
     .catch(err => console.error("ERROR:", err));
-    // .then(data => setPhysicians (data)); 
+    
   }, []);
   
   return (
@@ -35,7 +34,7 @@ const Physicians = () => {
 
        <h1 className='physicianH1'>Physicians</h1>
       
-       {/* <MainBanner /> */}
+     
        < Banner img={groupPhysicians} title={'Manage Physicians'} />
 
        <Link to='/add-physician' className='nav-link'>Add New Physician</Link>

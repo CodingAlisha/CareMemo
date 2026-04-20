@@ -1,7 +1,7 @@
 import React from 'react'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
-import MainBanner from '../components/MainBanner';
+// import MainBanner from '../components/MainBanner';
 import Banner from '../components/Banner';
 import freshMeals from '../assets/freshMeals.jpeg';
 import DeleteButton from '../components/DeleteButton';
@@ -21,7 +21,7 @@ const MealList = () => {
   });
 
   useEffect(( ) => {
-    // fetch('http://localhost:3001/api/listMeals')
+   
     fetch ('/api/listMeals', {
       credentials: 'include'
     })
@@ -41,7 +41,7 @@ const MealList = () => {
       
        <h1 className='mealH1'>Favorite Meals</h1>
 
-       {/* <MainBanner /> */}
+       
        <Banner img={freshMeals} title={'Personalize Meals'}/>
 
        <Link to='/add-meals' className='nav-link'>Add New Meal</Link>
@@ -58,7 +58,7 @@ const MealList = () => {
        
        <span className='cardSpan'>
        {filteredMeals.map(meal => (
-        // .name is named after the model schema variable name const mealSelection
+        
         <div className='mealContainer' key= {meal._id}>
           <p className='mealName'>{meal.name}</p>
           <p className='mealMeal'>{meal.mealType}</p>
