@@ -7,7 +7,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'http://localhost:3001',
+        target: 'https://carememo.onrender.com',
         changeOrigin: true,
     }
   }
@@ -15,14 +15,3 @@ export default defineConfig({
 })
 
 
-// export default defineConfig({
-//   plugins: [react()],
-//   server: {
-//     proxy: {
-//       '/api': {
-//         target: 'http://localhost:3001',
-//         changeOrigin: true,
-//       }
-//     }
-//   }
-// })
