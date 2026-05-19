@@ -12,7 +12,6 @@ const { isValidPhoneNumber } = require('libphonenumber-js');
 
 // handle errors
 const handleErrors = (err) => {
-    // console.log(err.message, err.code);
     let errors = { email: '', password: ''};
 
 // incorrect email
@@ -34,7 +33,6 @@ if (err.code === 11000) {
     // validation errors
 if (err.message.includes('register validation failed')) {
     Object.values(err.errors).forEach(({properties}) => {
-        // console.log(error.properties);
         errors[properties.path] = properties.message;
     })
 }
@@ -114,7 +112,7 @@ module.exports.logout = (req, res) => {
     maxAge: 1
   })
   res.status(200).json({message: 'logged out'});
-  // res.redirect('/').json({message: 'logged out and redirect to landing page'});
+  
   
 };
 
@@ -127,7 +125,7 @@ module.exports.getLanding = (req, res) => {
 
 // GET ROUTE FOR SCHEDULE
 module.exports.getSchedule = async (req, res) => {
-  console.log('GET SCHEDULE USER ID:', req.userId);
+  // console.log('GET SCHEDULE USER ID:', req.userId);
   try {
     const schedule = await Schedule.find({ user: req.userId });
    res.json(schedule);
@@ -150,7 +148,6 @@ module.exports.createSchedule = async (req, res) => {
 
 
     // GET ROUTE FOR PHYSICIANS
-    // Import physician model
 module.exports.getPhysician = async (req, res) => {
     try {
         const physicians = await Physician.find({ user: req.userId });
@@ -182,7 +179,7 @@ module.exports.getMeal = async (req, res) => {
   try {
     
     const listMeals = await Meal.find({ user: req.userId });
-    console.log('USER ID:', req.userId);
+   
     res.json(listMeals);
   } catch (err) {
     res.status(500).json({ error: 'Failed to fetch listMeals'});
@@ -192,7 +189,7 @@ module.exports.getMeal = async (req, res) => {
 // POST ROUTE FOR MEALS
 
 module.exports.createMeal = async (req, res) => {
-  console.log(req.body);
+ 
   try {
     const newMeal = await Meal.create({
       ...req.body, user: req.userId});
