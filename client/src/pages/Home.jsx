@@ -14,8 +14,6 @@ import medicalIcon from '../assets/medicalIcon.jpg';
 import medicationIcon from '../assets/medicationIcon.jpg';
 import NavBar from '../components/NavBar';
 
-// import { getMedication } from '../components/ServicesMedication';
-// import { getMedicalAlert } from '../components/ServicesMedical';
 
 
 const Home = () => {

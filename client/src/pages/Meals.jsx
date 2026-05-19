@@ -1,7 +1,6 @@
 import React from 'react'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
-// import MainBanner from '../components/MainBanner';
 import Banner from '../components/Banner';
 import freshMeals from '../assets/freshMeals.jpeg';
 import DeleteButton from '../components/DeleteButton';
@@ -27,7 +26,7 @@ const MealList = () => {
     })
     .then(res => res.json ())
     .then(data => {
-      console.log("DATA FROM API:", data);
+      // console.log("DATA FROM API:", data);
       setMeals(data);
     })
     .catch(err => console.error("ERROR:", err));

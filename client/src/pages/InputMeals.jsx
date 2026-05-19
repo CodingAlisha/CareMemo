@@ -21,7 +21,7 @@ const InputMeals = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log("Submitting:", formData);
+       
       
         const res = await fetch("/api/listMeals", {
           method: "POST",
@@ -33,7 +33,7 @@ const InputMeals = () => {
         });
       
         const data = await res.json();
-        console.log("Response:", data);
+       
       
         navigate("/list-meals");
       };

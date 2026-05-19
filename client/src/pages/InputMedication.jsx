@@ -21,7 +21,7 @@ const InputMedication = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log("Submitting:", formData);
+      
       
         const res = await fetch("/api/medication", {
           method: "POST",
@@ -34,7 +34,7 @@ const InputMedication = () => {
         });
       
         const data = await res.json();
-        console.log("Response:", data);
+        
       
         navigate("/home");
       };

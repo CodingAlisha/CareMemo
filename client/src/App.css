@@ -203,12 +203,7 @@ body {
   text-align: center;
 }
 
-/* nav {
-  display: flex;
-  justify-content:space-between;
-  align-items: flex-end;
-  margin-bottom: 20px;
-} */
+
 
 .btn{
   border-radius: 36px;
@@ -348,11 +343,7 @@ body {
 
 }
 
-/* .extraInfo {
-  padding: 0px;
-  margin: 0px;
-  list-style: none;
-} */
+
 
 .cardSpan {
   flex-wrap: wrap; 
@@ -438,11 +429,11 @@ body {
   background-color:#fff;
   border-radius:10px ;
   font-family: "Inter", sans-serif;
-  /* font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  text-align:justify; */
+ 
 }
 
-/* .NavBar {
-  justify-content: space-between;
-  gap: 20px;
-} */
+
+
+.Navbar {
+  padding-bottom: 20px;
+}

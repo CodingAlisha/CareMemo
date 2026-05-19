@@ -2,7 +2,7 @@ import React from 'react'
 import { useEffect, useState } from 'react';
 import DeleteButton from '../components/DeleteButton';
 import medicalIcon from '../assets/medicalIcon.jpg';
-// DELETE BUTTON NOT WORKING
+
 
 
 const MedicalList = () => {

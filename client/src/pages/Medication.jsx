@@ -19,7 +19,7 @@ const MedicationList = () => {
     })
     .then(res => res.json ())
     .then(data => {
-      console.log("DATA FROM API:", data);
+      // console.log("DATA FROM API:", data);
       setMedications(data);
     })
     .catch(err => console.error("ERROR:", err));

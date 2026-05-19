@@ -21,7 +21,7 @@ const Physicians = () => {
     })
     .then(res => res.json ())
     .then(data => {
-      console.log("DATA FROM API:", data);
+      // console.log("DATA FROM API:", data);
       setPhysicians(data);
     })
     .catch(err => console.error("ERROR:", err));
