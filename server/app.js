@@ -27,10 +27,11 @@ app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 // app.use(cors());
 
 app.use(cors({
-  // origin: true,
-  origin: "http://localhost:5173",
+  
+  // origin: "http://localhost:5173",
+  origin: true,
   credentials: true,
-  methods: ["GET","POST","PUT","DELETE"],
+  // methods: ["GET","POST","PUT","DELETE"],
 }));
 
 // middleware
