@@ -24,14 +24,12 @@ app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 }
 
 // Enable CORS for all routes
-// app.use(cors());
+
 
 app.use(cors({
   
   origin: "https://care-memo.onrender.com",
-  // origin: true,
   credentials: true,
-  // methods: ["GET","POST","PUT","DELETE"],
 }));
 
 // middleware

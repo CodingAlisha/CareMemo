@@ -62,9 +62,7 @@ module.exports.createSignUp = async (req, res) => {
       const token = createToken(newUser._id);
       res.cookie('jwt', token, {
         httpOnly:true, 
-        sameSite: 'strict', //in production
-        // sameSite: 'lax',
-        //in production(HTTPS)
+        sameSite: 'none', //in production none or strict on the same domain
         secure: true,
         maxAge: maxAge * 1000
       });
@@ -91,7 +89,7 @@ module.exports.createLogin = async  (req, res) => {
       const token = createToken(user._id);
       res.cookie('jwt', token, {
         httpOnly:true,
-        sameSite: 'strict',
+        sameSite: 'none',
         secure: true,
         maxAge: maxAge * 1000
       });
