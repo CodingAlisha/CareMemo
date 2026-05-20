@@ -16,12 +16,12 @@ const Physicians = () => {
 
   useEffect(( ) => {
     
-    fetch ('/api/physician', {
+    fetch (`${import.meta.env.VITE_API_URL}/api/physician`, {
       credentials: 'include'
     })
     .then(res => res.json ())
     .then(data => {
-      // console.log("DATA FROM API:", data);
+     
       setPhysicians(data);
     })
     .catch(err => console.error("ERROR:", err));

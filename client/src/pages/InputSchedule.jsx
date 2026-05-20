@@ -25,7 +25,7 @@ const InputSchedule = () => {
         e.preventDefault();
         console.log("Submitting:", formData);
 
-        const res = await fetch("/api/schedule", {
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/api/schedule`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",},
@@ -34,7 +34,7 @@ const InputSchedule = () => {
         });
       
         const data = await res.json();
-        console.log("Response:", data);
+       
       
         navigate("/list-schedule");
       };

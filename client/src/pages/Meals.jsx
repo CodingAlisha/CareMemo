@@ -21,12 +21,12 @@ const MealList = () => {
 
   useEffect(( ) => {
    
-    fetch ('/api/listMeals', {
+    fetch (`${import.meta.env.VITE_API_URL}/api/listMeals`, {
       credentials: 'include'
     })
     .then(res => res.json ())
     .then(data => {
-      // console.log("DATA FROM API:", data);
+  
       setMeals(data);
     })
     .catch(err => console.error("ERROR:", err));

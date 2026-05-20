@@ -30,14 +30,14 @@ const Home = () => {
 
   useEffect(( ) => {
     
-    fetch ('/api/medication', {
+    fetch (`${import.meta.env.VITE_API_URL}/api/medication`, {
       method: 'GET',
       credentials: 'include'
     })
 
     .then(res => res.json ())
     .then(data => {
-      console.log("DATA FROM API:", data);
+     
       setMedications(data);
     })
     .catch(err => console.error("ERROR:", err));
@@ -45,13 +45,13 @@ const Home = () => {
 
   useEffect(( ) => {
     
-    fetch ('/api/medicalAlert', {
+    fetch (`${import.meta.env.VITE_API_URL}/api/medicalAlert`, {
       method: 'GET',
       credentials: 'include'
     })
     .then(res => res.json ())
     .then(data => {
-      console.log("DATA FROM API:", data);
+     
       setMedicals(data);
     })
     .catch(err => console.error("ERROR:", err));

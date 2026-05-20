@@ -20,7 +20,7 @@ const SignUp = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(email, password);
+    
 
     
       // MAKE SURE PASSWORDS MATCH
