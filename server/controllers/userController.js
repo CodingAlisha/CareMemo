@@ -62,10 +62,10 @@ module.exports.createSignUp = async (req, res) => {
       const token = createToken(newUser._id);
       res.cookie('jwt', token, {
         httpOnly:true, 
-        // sameSite: 'strict' in production
-        sameSite: 'lax',
-        // secure true in production(HTTPS)
-        secure: false,
+        sameSite: 'strict', //in production
+        // sameSite: 'lax',
+        //in production(HTTPS)
+        secure: true,
         maxAge: maxAge * 1000
       });
       res.status(201).json({user: newUser._id});
@@ -91,8 +91,8 @@ module.exports.createLogin = async  (req, res) => {
       const token = createToken(user._id);
       res.cookie('jwt', token, {
         httpOnly:true,
-        sameSite: 'lax',
-        secure: false,
+        sameSite: 'strict',
+        secure: true,
         maxAge: maxAge * 1000
       });
       res.status(200).json({user: user._id});
