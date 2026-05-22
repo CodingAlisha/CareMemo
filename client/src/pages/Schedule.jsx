@@ -26,7 +26,7 @@ const UpcomingSchedule = () => {
 
   useEffect(( ) => {
     
-    fetch (`${import.meta.env.VITE_API_URL}/api/schedule`, {
+    fetch ("/api/schedule", {
       credentials: 'include'
     })
     .then(res => res.json ())

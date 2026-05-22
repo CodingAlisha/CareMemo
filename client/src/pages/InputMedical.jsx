@@ -23,7 +23,7 @@ const InputMedical = () => {
         e.preventDefault();
         console.log("Submitting:", formData);
       
-        const res = await fetch(`${import.meta.env.VITE_API_URL}/api/medicalAlert`, {
+        const res = await fetch("/api/medicalAlert", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

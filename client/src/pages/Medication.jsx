@@ -13,7 +13,7 @@ const MedicationList = () => {
 
   useEffect(( ) => {
     
-    fetch (`${import.meta.env.VITE_API_URL}/api/medication`, {
+    fetch ("/api/medication", {
       method: 'GET',
       credentials: 'include'
     })

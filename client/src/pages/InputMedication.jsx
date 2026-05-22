@@ -23,7 +23,7 @@ const InputMedication = () => {
         e.preventDefault();
       
       
-        const res = await fetch(`${import.meta.env.VITE_API_URL}/api/medication`, {
+        const res = await fetch("/api/medication", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

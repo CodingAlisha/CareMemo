@@ -16,7 +16,7 @@ const Physicians = () => {
 
   useEffect(( ) => {
     
-    fetch (`${import.meta.env.VITE_API_URL}/api/physician`, {
+    fetch ("/api/physician", {
       credentials: 'include'
     })
     .then(res => res.json ())

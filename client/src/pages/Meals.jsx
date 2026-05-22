@@ -21,7 +21,7 @@ const MealList = () => {
 
   useEffect(( ) => {
    
-    fetch (`${import.meta.env.VITE_API_URL}/api/listMeals`, {
+    fetch ("/api/listMeals", {
       credentials: 'include'
     })
     .then(res => res.json ())
