@@ -69,7 +69,9 @@ const SignUp = () => {
 
 
         <label htmlFor="firstName" className='formTitle'>First Name</label>
+        
         <input
+          id='firstName'
           type="text"
           name="firstName"
           value={firstName}
@@ -79,6 +81,7 @@ const SignUp = () => {
 
         <label htmlFor="lastName" className='formTitle'>Last Name</label>
         <input
+          id='lastName'
           type="text"
           name="lastName"
           value={lastName}
@@ -89,6 +92,7 @@ const SignUp = () => {
 
         <label htmlFor="email" className='formTitle'>Email</label>
         <input
+          id='email'
           type="text"
           name="email"
           value={email}
@@ -99,6 +103,7 @@ const SignUp = () => {
 
         <label htmlFor="password" className='formTitle'>Password</label>
         <input
+          id='password'
           type="password"
           name="password"
           value={password}
@@ -109,6 +114,7 @@ const SignUp = () => {
 
         <label htmlFor="confirmPassword" className='formTitle'>Confirm Password</label>
         <input
+          id='confirmPassword'
           type="password"
           name="password"
           value={confirmPassword}
