@@ -55,7 +55,7 @@ const Login = () => {
      
         <h2>Login</h2>
 
-        <label htmlFor="email" className='formTitle'>Email</label>
+        <label className='formTitle'>Email</label>
         <input
           type="text"
           name="email"
@@ -65,10 +65,11 @@ const Login = () => {
         />
         <div className="email error">{emailError}</div>
 
-        <label htmlFor="password" className='formTitle'>Password</label>
+        <label className='formTitle'>Password</label>
         <input
           type="password"
           name="password"
+          autoComplete='off'
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required

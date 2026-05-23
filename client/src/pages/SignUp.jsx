@@ -55,7 +55,7 @@ const SignUp = () => {
       }
 
     } catch (err) {
-      console.error(err);
+      // console.error(err);
     }
   };
 
@@ -68,8 +68,7 @@ const SignUp = () => {
         <h2>Sign Up</h2>
 
 
-        <label htmlFor="firstName" className='formTitle'>First Name</label>
-        
+        <label className='formTitle'>First Name</label>
         <input
           id='firstName'
           type="text"
@@ -79,7 +78,7 @@ const SignUp = () => {
           required
         />
 
-        <label htmlFor="lastName" className='formTitle'>Last Name</label>
+        <label className='formTitle'>Last Name</label>
         <input
           id='lastName'
           type="text"
@@ -90,18 +89,19 @@ const SignUp = () => {
         />
 
 
-        <label htmlFor="email" className='formTitle'>Email</label>
+        <label className='formTitle'>Email</label>
         <input
           id='email'
           type="text"
           name="email"
+          autoComplete='off'
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
         />
         <div className="email error">{emailError}</div>
 
-        <label htmlFor="password" className='formTitle'>Password</label>
+        <label className='formTitle'>Password</label>
         <input
           id='password'
           type="password"
@@ -112,7 +112,7 @@ const SignUp = () => {
         />
         <div className="passwordError">{passwordError}</div>
 
-        <label htmlFor="confirmPassword" className='formTitle'>Confirm Password</label>
+        <label className='formTitle'>Confirm Password</label>
         <input
           id='confirmPassword'
           type="password"
