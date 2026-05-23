@@ -42,7 +42,13 @@ const SignUp = () => {
         credentials: 'include'
       });
 
-      const data = await res.json();
+      console.log('URL:', import.meta.env.VITE_API_URL);
+      console.log('STATUS:', res.status);
+      console.log('OK:', res.ok);
+
+      const data = JSON.parse(text);
+
+      // const data = await res.json();
 
       if (data.errors) {
         setEmailError(data.errors.email || '');
