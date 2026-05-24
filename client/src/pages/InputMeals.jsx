@@ -48,9 +48,11 @@ const InputMeals = () => {
 
             <form className='mealForm' onSubmit={handleSubmit}>
 
-            <label htmlFor="Meal Name">Meal Name</label>
+            <label htmlFor="Meal-Name">Meal Name</label>
             <input className='formInput'
+            id='Meal-Name'
             name='name'
+            autoComplete='off'
             value={formData.name || ''}
             onChange={handleChange}
             placeholder='ex: Turkey Sandwich'
@@ -58,6 +60,7 @@ const InputMeals = () => {
 
             <select className='formSelect'
             name="mealType"
+            autoComplete='off'
             value={formData.mealType}
             onChange={handleChange}
             >

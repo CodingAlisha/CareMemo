@@ -35,20 +35,14 @@ const SignUp = () => {
     setPasswordError('');
 
     try {
-      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/SignUp`, {
+      const res = await fetch("/api/SignUp", {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ firstName, lastName, email, password }),
         credentials: 'include'
       });
 
-      console.log('URL:', import.meta.env.VITE_API_URL);
-      console.log('STATUS:', res.status);
-      console.log('OK:', res.ok);
-
-      const data = JSON.parse(text);
-
-      // const data = await res.json();
+      const data = await res.json();
 
       if (data.errors) {
         setEmailError(data.errors.email || '');
@@ -74,7 +68,7 @@ const SignUp = () => {
         <h2>Sign Up</h2>
 
 
-        <label className='formTitle'>First Name</label>
+        <label htmlFor='firstName' className='formTitle'>First Name</label>
         <input
           id='firstName'
           type="text"
@@ -84,18 +78,19 @@ const SignUp = () => {
           required
         />
 
-        <label className='formTitle'>Last Name</label>
+        <label htmlFor='lastName' className='formTitle'>Last Name</label>
         <input
           id='lastName'
           type="text"
           name="lastName"
+          autoComplete='off'
           value={lastName}
           onChange={(e) => setLastName(e.target.value)}
           required
         />
 
 
-        <label className='formTitle'>Email</label>
+        <label htmlFor='email' className='formTitle'>Email</label>
         <input
           id='email'
           type="text"
@@ -107,22 +102,24 @@ const SignUp = () => {
         />
         <div className="email error">{emailError}</div>
 
-        <label className='formTitle'>Password</label>
+        <label htmlFor='password' className='formTitle'>Password</label>
         <input
           id='password'
           type="password"
           name="password"
+          autoComplete='off'
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
         />
         <div className="passwordError">{passwordError}</div>
 
-        <label className='formTitle'>Confirm Password</label>
+        <label htmlFor='confirmPassword' className='formTitle'>Confirm Password</label>
         <input
           id='confirmPassword'
           type="password"
-          name="password"
+          name="confirm_password"
+          autoComplete='off'
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}
           required
