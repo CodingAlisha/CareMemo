@@ -42,21 +42,35 @@ const SignUp = () => {
         credentials: 'include'
       });
 
-      const data = await res.json();
+      //Read response as text first
+      const textResponse = await response.text();
+      console.log('Raw Server Response:', textResponse);
 
-      if (data.errors) {
-        setEmailError(data.errors.email || '');
-        setPasswordError(data.errors.password || '');
+      const data = textResponse ? JSON.parse(textResponse) : {};
+
+      if (!response.ok) {
+        throw new Error(data.message || 'Signup failed');
       }
 
-      if (data.user) {
-        
-        setTimeout(() => navigate('/home'), 100);
-      }
-
-    } catch (err) {
-      console.error(err);
+    } catch(error) {
+      console.error('Fetch/Parsing error:', error);
     }
+
+    //   const data = await res.json();
+
+    //   if (data.errors) {
+    //     setEmailError(data.errors.email || '');
+    //     setPasswordError(data.errors.password || '');
+    //   }
+
+    //   if (data.user) {
+        
+    //     setTimeout(() => navigate('/home'), 100);
+    //   }
+
+    // } catch (err) {
+    //   console.error(err);
+    // }
   };
 
   return (
