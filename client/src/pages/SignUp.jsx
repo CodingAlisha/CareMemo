@@ -35,7 +35,7 @@ const SignUp = () => {
     setPasswordError('');
 
     try {
-      const res = await fetch("/api/SignUp", {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/SignUp`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ firstName, lastName, email, password }),
@@ -43,34 +43,34 @@ const SignUp = () => {
       });
 
       //Read response as text first
-      const textResponse = await response.text();
-      console.log('Raw Server Response:', textResponse);
+    //   const textResponse = await response.text();
+    //   console.log('Raw Server Response:', textResponse);
 
-      const data = textResponse ? JSON.parse(textResponse) : {};
+    //   const data = textResponse ? JSON.parse(textResponse) : {};
 
-      if (!response.ok) {
-        throw new Error(data.message || 'Signup failed');
+    //   if (!response.ok) {
+    //     throw new Error(data.message || 'Signup failed');
+    //   }
+
+    // } catch(error) {
+    //   console.error('Fetch/Parsing error:', error);
+    // }
+
+      const data = await res.json();
+
+      if (data.errors) {
+        setEmailError(data.errors.email || '');
+        setPasswordError(data.errors.password || '');
       }
 
-    } catch(error) {
-      console.error('Fetch/Parsing error:', error);
-    }
-
-    //   const data = await res.json();
-
-    //   if (data.errors) {
-    //     setEmailError(data.errors.email || '');
-    //     setPasswordError(data.errors.password || '');
-    //   }
-
-    //   if (data.user) {
+      if (data.user) {
         
-    //     setTimeout(() => navigate('/home'), 100);
-    //   }
+        setTimeout(() => navigate('/home'), 100);
+      }
 
-    // } catch (err) {
-    //   console.error(err);
-    // }
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   return (
