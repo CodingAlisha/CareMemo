@@ -35,26 +35,12 @@ const SignUp = () => {
     setPasswordError('');
 
     try {
-      const res = await fetch(`${import.meta.env.VITE_API_URL}/SignUp`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/SignUp`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ firstName, lastName, email, password }),
         credentials: 'include'
       });
-
-      //Read response as text first
-    //   const textResponse = await response.text();
-    //   console.log('Raw Server Response:', textResponse);
-
-    //   const data = textResponse ? JSON.parse(textResponse) : {};
-
-    //   if (!response.ok) {
-    //     throw new Error(data.message || 'Signup failed');
-    //   }
-
-    // } catch(error) {
-    //   console.error('Fetch/Parsing error:', error);
-    // }
 
       const data = await res.json();
 
