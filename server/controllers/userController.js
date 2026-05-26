@@ -56,10 +56,11 @@ module.exports.getSignUp = (req, res) => {
 
 module.exports.createSignUp = async (req, res) => {
   const { firstName, lastName, email, password } = req.body;
-  console.log('User created:', newUser._id);
+  
   
   try {
       const newUser = await User.create({ firstName, lastName, email, password });
+      console.log('User created:', newUser._id);
       const token = createToken(newUser._id);
       res.cookie('jwt', token, {
         httpOnly:true, 
