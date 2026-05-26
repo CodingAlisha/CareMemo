@@ -55,6 +55,7 @@ module.exports.getSignUp = (req, res) => {
 }
 
 module.exports.createSignUp = async (req, res) => {
+  console.log('signup route success', req.body)
   const { firstName, lastName, email, password } = req.body;
   
   
