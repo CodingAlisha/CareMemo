@@ -14,7 +14,7 @@ const MedicalList = () => {
 
   useEffect(( ) => {
     
-    fetch ("/api/medicalAlert", {
+    fetch (`${import.meta.env.VITE_API_URL}/api/medicalAlert`, {
       method: 'GET',
       credentials: 'include'
     }
