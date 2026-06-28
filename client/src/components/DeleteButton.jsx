@@ -2,11 +2,11 @@
 // DELETE REUSABLE BUTTON 
 
 const DeleteButton = ({ endpoint, id, onDelete }) => {
-  const apiUrl = import.meta.env.VITE_API_URL;
+ 
 
     const handleDelete = async () => {
       try {
-        const response = await fetch(`${apiUrl}/api/${endpoint}/${id}`, { method: "DELETE" });
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/${endpoint}/${id}`, { method: "DELETE" });
 
         if (!response.ok) {
           throw new Error(`Failed to delete: ${response.status}`);
