@@ -44,9 +44,7 @@ const SignUp = () => {
       });
 
       const data = await res.json();
-      // const text = await res.text();
-      // console.log('raw response:', text);
-      // const data = text ? JSON.parse(text) : {};
+     
 
       if (data.errors) {
         setEmailError(data.errors.email || '');
