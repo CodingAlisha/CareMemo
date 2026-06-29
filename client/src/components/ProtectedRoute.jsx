@@ -6,7 +6,7 @@ const ProtectedRoute = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(null);
 
   useEffect(() => {
-    api.get(`${import.meta.env.VITE_API_URL}/api/checkUser`, {
+    api.get('api/checkUser', {
       credentials: 'include'
     })
       .then(() => setIsAuthenticated(true))
