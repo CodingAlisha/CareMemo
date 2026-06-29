@@ -6,7 +6,7 @@ const ProtectedRoute = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(null);
 
   useEffect(() => {
-    api.get('checkUser', {
+    api.get('api/checkUser', {
       credentials: 'include'
     })
       .then(() => setIsAuthenticated(true))
