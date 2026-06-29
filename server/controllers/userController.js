@@ -67,6 +67,7 @@ module.exports.createSignUp = async (req, res) => {
         httpOnly:true, 
         sameSite: 'none', //in production none or strict on the same domain
         secure: true,
+        domain: '.onrender.com',
         maxAge: maxAge * 1000
       });
       res.status(201).json({user: newUser._id});
