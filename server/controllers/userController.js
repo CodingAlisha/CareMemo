@@ -108,9 +108,10 @@ module.exports.createLogin = async  (req, res) => {
 
 // User Authentication Logout
 module.exports.logout = (req, res) => {
-  res.cookie('jwt', '', {
+  res.clearCookie('jwt', '', {
     httpOnly:true, 
-    maxAge: 1
+    sameSite: 'none',
+    secure: true
   })
   res.status(200).json({message: 'logged out'});
   
